@@ -1,0 +1,95 @@
+@import "../../styles/mixins";
+
+.dropzoneContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed #ffb800;
+  margin-bottom: 40px;
+  text-align: center;
+  width: 100%;
+}
+
+.dropzoneReject {
+  color: red;
+  border: 1px dashed red;
+}
+
+.dropzoneAccept {
+  color: #42d41a;
+  border: 1px dashed #42d41a;
+}
+
+.dropzoneHeadTitle {
+  margin: 26.5px 0 10px 0;
+  font-size: 2.25rem;
+}
+
+.dropzoneSubTitle {
+  margin: 0 0 26.5px 0;
+  font-size: 1.5rem;
+}
+
+@include iphoneProMax {
+  .dropzoneContainer {
+    height: 93px;
+    margin-bottom: 30px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 20px 0 10px 0;
+    font-size: 1.5rem;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.125rem;
+  }
+}
+
+@include ipadMini {
+  .dropzoneContainer {
+    height: 93px;
+    margin-bottom: 30px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 20px 0 10px 0;
+    font-size: 1.5rem;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.125rem;
+  }
+}
+
+@include ipadPro {
+  .dropzoneContainer {
+    height: 90px;
+    margin-bottom: 30px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 20px 0 10px 0;
+    font-size: 1.5rem;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.125rem;
+  }
+}
+
+@include desktop {
+  .dropzoneContainer {
+    height: 120px;
+    margin-bottom: 50px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 26.5px 0 10px 0;
+    font-size: 2.25rem;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.5rem;
+  }
+}

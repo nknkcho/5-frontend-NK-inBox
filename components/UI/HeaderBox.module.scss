@@ -1,0 +1,33 @@
+@import "../../styles/mixins";
+
+.headerBox {
+  width: 143px;
+  margin: 60px 60px 0 0;
+}
+
+@include iphoneProMax {
+  .headerBox {
+    width: 75px;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@include ipadMini {
+  .headerBox {
+    width: 80px;
+    margin: 10px 20px 0 0;
+  }
+}
+
+@include ipadPro {
+  .headerBox {
+    width: 100px;
+    margin: 30px 60px 0 0;
+  }
+}
+
+@include desktop {
+  .headerBox {
+    width: 120px;
+  }
+}
