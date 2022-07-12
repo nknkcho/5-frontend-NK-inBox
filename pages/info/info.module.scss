@@ -1,0 +1,65 @@
+@import "../../styles/mixins";
+
+.infoContainer {
+  margin: 0 60px 0 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.optionRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infoText {
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 100%;
+  color: white;
+}
+
+@include iphoneProMax {
+  .infoContainer {
+    margin: 0 20px;
+  }
+
+  .infoText {
+    margin: 176px 0 160px 0;
+    font-size: 1.5rem;
+  }
+}
+
+@include ipadMini {
+  .infoContainer {
+    margin: 0 25px;
+  }
+
+  .infoText {
+    margin: 200px 0 70px 0;
+    font-size: 1.5rem;
+  }
+}
+
+@include ipadPro {
+  .infoContainer {
+    margin: 0 50px;
+  }
+
+  .infoText {
+    margin: 221px 0 170px 0;
+    font-size: 2.25rem;
+  }
+}
+
+@include desktop {
+  .infoContainer {
+    margin: 0 50px;
+  }
+
+  .infoText {
+    margin: 331px 0 230px 0;
+    font-size: 3rem;
+  }
+}
