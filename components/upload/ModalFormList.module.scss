@@ -1,0 +1,229 @@
+@import "../../styles/mixins";
+
+.inputLayout {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputComponent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.inputLabel {
+  font-size: 2.25rem;
+}
+
+.rangeInputContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+}
+
+.inputBtn {
+  width: 340px;
+  height: 62px;
+  background: rgba(255, 184, 0, 0.05);
+  border: 1px solid #ffb800;
+  border-radius: 73px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #FFB800;
+  cursor: pointer;
+}
+
+.hasError {
+  border-color: red;
+}
+
+@mixin boxTheme {
+  background: rgba(255, 184, 0, 0.05);
+  border: 1px solid #ffb800;
+  border-radius: 73px;
+  padding-left: 60px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  &::placeholder {
+    color: #FFB800;
+    font-size: 1.5rem;
+  }
+}
+
+.inputBox {
+  @include boxTheme;
+  width: 700px;
+  height: 62px;
+}
+
+.emailBox {
+  @include boxTheme;
+  width: 425px;
+  height: 62px;
+}
+
+.emailInputContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.confirmBtn {
+  width: 260px;
+  height: 62px;
+  border-radius: 73px;
+  background: #ffb800;
+  opacity: 0.3;
+  color: white;
+  font-weight: 400;
+  font-size: 2.25rem;
+}
+
+@include iphoneProMax {
+  .inputComponent {
+    margin-bottom: 10px;
+  }
+
+  .inputLabel {
+    font-size: 1.125rem;
+  }
+
+  .rangeInputContainer {
+    width: 242px;
+  }
+  
+  .inputBtn {
+    height: 50px;
+    font-size: 1.125rem;
+  }
+
+  .inputBox {
+    width: 242px;
+    height: 50px;
+    padding-left: 20px;
+
+    &::placeholder {
+      font-size: 1.125rem;
+    }
+  }
+
+  .emailBox {
+    width: 162px;
+    height: 50px;
+    padding-left: 20px;
+    margin: 0;
+
+    &::placeholder {
+      font-size: 1.125rem;
+    }
+  }
+
+  .confirmBtn {
+    width: 80px;
+    height: 50px;
+    font-size: 1rem;
+  }
+}
+
+@include ipadMini {
+  .inputComponent {
+    margin-bottom: 10px;
+  }
+
+  .inputLabel {
+    font-size: 1.125rem;
+  }
+
+  .rangeInputContainer {
+    width: 242px;
+  }
+  
+  .inputBtn {
+    height: 50px;
+    font-size: 1.125rem;
+  }
+
+  .inputBox {
+    width: 242px;
+    height: 50px;
+    padding-left: 20px;
+
+    &::placeholder {
+      font-size: 1.125rem;
+    }
+  }
+
+  .emailBox {
+    width: 162px;
+    height: 50px;
+    padding-left: 20px;
+    margin: 0;
+
+    &::placeholder {
+      font-size: 1.125rem;
+    }
+  }
+
+  .confirmBtn {
+    width: 80px;
+    height: 50px;
+    font-size: 1rem;
+  }
+}
+
+@include ipadPro {
+  .inputComponent {
+    margin-bottom: 20px;
+  }
+
+  .inputLabel {
+    font-size: 1.5rem;
+  }
+
+  .rangeInputContainer {
+    width: 541px;
+  }
+  
+  .inputBtn {
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .inputBox {
+    width: 541px;
+    height: 60px;
+    padding-left: 20px;
+
+    &::placeholder {
+      font-size: 1.5rem;
+    }
+  }
+
+  .emailBox {
+    width: 294px;
+    height: 60px;
+    padding-left: 20px;
+    margin: 0;
+
+    &::placeholder {
+      font-size: 1.5rem;
+    }
+  }
+
+  .emailInputContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .confirmBtn {
+    width: 242px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-left: 5px;
+  }
+}
+
+@include desktop {
+
+}

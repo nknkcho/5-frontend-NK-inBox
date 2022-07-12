@@ -1,0 +1,31 @@
+@import "./variables";
+
+@mixin iphonePro {
+  @media (max-width: #{$breakpoint-iphonePro - 1px}) {
+    @content;
+  }
+}
+
+@mixin iphoneProMax {
+  @media (min-width: #{$breakpoint-iphonePro}) and (max-width: #{$breakpoint-iphoneProMax - 1px}) {
+    @content;
+  }
+}
+
+@mixin ipadMini {
+  @media (min-width: #{$breakpoint-iphoneProMax}) and (max-width: #{$breakpoint-ipadMini - 1px}) {
+    @content;
+  }
+}
+
+@mixin ipadPro {
+  @media (min-width: #{$breakpoint-ipadMini}) and (max-width: #{$breakpoint-ipadPro - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-ipadPro}) and (max-width: #{$breakpoint-desktop - 1px}) {
+    @content;
+  }
+}

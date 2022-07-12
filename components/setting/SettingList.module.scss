@@ -1,0 +1,180 @@
+@import "../../styles/mixins";
+
+.settingContainer {
+  margin: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.optionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin btnTheme($width: 300px) {
+  width: $width;
+  height: 135px;
+  margin: 0 20px 0 20px;
+  font-weight: 800;
+  font-size: 6.25rem;
+  text-align: center;
+  border-radius: 300px;
+  border: 1px solid #ffffff;
+  background-color: #FFFFFF66;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.btn {
+  @include btnTheme;
+}
+
+.rangeBtn {
+  @include btnTheme;
+}
+
+.backBtn {
+  @include btnTheme($width: 650px);
+}
+
+.text {
+  font-weight: 800;
+  font-size: 10.625rem;
+  color: #FFFFFF;
+  opacity: 80%;
+  margin: 0;
+  padding: 0;
+  line-height: 110%;
+}
+
+@include iphoneProMax {
+  .settingContainer {
+    margin: 255px 0 0 20px;
+  }
+
+  .optionRow {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .btn,
+  .rangeBtn {
+    height: 54px;
+    font-size: 2.25rem;
+    margin: 5px 10px 0 0;
+  }
+
+  .btn {
+    width: 113px;
+  }
+
+  .rangeBtn {
+    width: 100px;
+  }
+
+  .backBtn {
+    width: 221px;
+    height: 54px;
+    font-size: 2.25rem;
+    margin: 0;
+  }
+
+  .text {
+    font-size: 3rem;
+  }
+}
+
+@include ipadMini {
+  .settingContainer {
+    margin: 180px 0 0 20px;
+  }
+
+  .optionRow {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .btn,
+  .rangeBtn {
+    width: 113px;
+    height: 54px;
+    font-size: 2.25rem;
+    margin: 5px 10px 0 0;
+  }
+
+  .backBtn {
+    width: 250px;
+    height: 54px;
+    font-size: 2.25rem;
+    margin: 0;
+  }
+
+  .text {
+    font-size: 3rem;
+  }
+}
+
+@include ipadPro {
+  .settingContainer {
+    margin: 190px 0 0 60px;
+  }
+
+  .optionRow {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .btn,
+  .rangeBtn {
+    width: 151px;
+    height: 76px;
+    font-size: 3rem;
+    margin: 5px 10px 0 0;
+  }
+
+  .backBtn {
+    width: 350px;
+    height: 76px;
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  .text {
+    font-size: 4.5rem;
+  }
+}
+
+@include desktop {
+  .settingContainer {
+    margin: 210px 0 0 60px;
+  }
+
+  .optionRow {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .btn,
+  .rangeBtn {
+    width: 216px;
+    height: 98px;
+    font-size: 4.5rem;
+    margin: 5px 10px 0 0;
+  }
+
+  .backBtn {
+    width: 520px;
+    height: 98px;
+    font-size: 4.5rem;
+    margin: 0;
+  }
+
+  .text {
+    font-size: 7.5rem;
+  }
+}

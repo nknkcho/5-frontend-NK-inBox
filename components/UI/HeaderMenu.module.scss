@@ -1,0 +1,77 @@
+@import "../../styles/mixins";
+
+.menuContainer {
+  margin: 60px 0 0 60px;
+  display: flex;
+  column-gap: 60px;
+  color: white;
+}
+
+.logo {
+  font-size: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.li {
+  margin-left: 60px;
+  padding: 0;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+@include iphoneProMax {
+  .menuContainer {
+    flex-direction: column;
+    margin: 30px 0 0 20px;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .listContainer {
+    display: flex;
+  }
+
+  .li {
+    margin: 20px 0 0 0;
+    font-size: 1.25rem;
+  }
+
+  .secondLi {
+    margin-left: 10px;
+  }
+}
+
+@include ipadMini {
+  .menuContainer {
+    flex-direction: column;
+    margin: 30px 0 0 20px;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .listContainer {
+    display: flex;
+  }
+
+  .li {
+    margin: 20px 0 0 0;
+    font-size: 1.25rem;
+  }
+
+  .secondLi {
+    margin-left: 10px;
+  }
+}
+
+@include ipadPro {
+
+}
+
+@include desktop {
+
+}
