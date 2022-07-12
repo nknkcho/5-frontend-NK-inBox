@@ -1,0 +1,15 @@
+@import "../../styles/mixins";
+
+.portfolioContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.alignComponents {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
