@@ -8,7 +8,6 @@ export default function DropzoneComponent() {
   const [progress, setProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
 
-  console.log(`env : ${process.env.REGION}`);
   AWS.config.update({
     accessKeyId: process.env.ACCESS_KEY,
     secretAccessKey: process.env.SECRET_KEY,
