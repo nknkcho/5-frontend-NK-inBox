@@ -38,18 +38,38 @@
   padding: 0 40px 0px 40px;
 }
 
-.submitBtn {
+.dropzoneContainer {
   display: flex;
-  justify-content: center;
-  width: 896px;
-  height: 62px;
-  border-radius: 60px;
-  border-style: none;
-  background-color: #ffb800;
-  opacity: 0.3;
-  color: white;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed #ffb800;
+  margin-bottom: 40px;
+  text-align: center;
+  width: 100%;
+}
+
+.dropzoneReject {
+  color: red;
+  border: 1px dashed red;
+}
+
+.dropzoneAccept {
+  color: #42d41a;
+  border: 1px dashed #42d41a;
+}
+
+.dropzoneHeadTitle {
+  margin: 26.5px 0 10px 0;
   font-size: 2.25rem;
-  font-weight: 600;
+}
+
+.dropzoneSubTitle {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+}
+
+.dropzoneProgress {
+  margin: 0 0 10px 0;
 }
 
 @include iphoneProMax {
@@ -72,10 +92,18 @@
     padding: 0;
   }
 
-  .submitBtn {
-    width: 100%;
+  .dropzoneContainer {
+    height: 93px;
+    margin-bottom: 30px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 20px 0 10px 0;
     font-size: 1.5rem;
-    margin-top: 30px;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.125rem;
   }
 }
 
@@ -99,10 +127,18 @@
     padding: 0;
   }
 
-  .submitBtn {
-    width: 100%;
+  .dropzoneContainer {
+    height: 93px;
+    margin-bottom: 30px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 20px 0 10px 0;
     font-size: 1.5rem;
-    margin-top: 20px;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.125rem;
   }
 }
 
@@ -126,10 +162,18 @@
     padding: 0;
   }
 
-  .submitBtn {
-    width: 100%;
-    font-size: 2.25rem;
-    margin-top: 40px;
+  .dropzoneContainer {
+    height: 90px;
+    margin-bottom: 30px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 20px 0 10px 0;
+    font-size: 1.5rem;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.125rem;
   }
 }
 
@@ -152,10 +196,18 @@
   .formContainer {
     padding: 0;
   }
+  
+  .dropzoneContainer {
+    height: 120px;
+    margin-bottom: 50px;
+  }
 
-  .submitBtn {
-    width: 100%;
+  .dropzoneHeadTitle {
+    margin: 26.5px 0 10px 0;
     font-size: 2.25rem;
-    margin-top: 40px;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.5rem;
   }
 }

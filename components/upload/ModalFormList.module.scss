@@ -80,6 +80,21 @@
   font-size: 2.25rem;
 }
 
+.submitBtn {
+  display: flex;
+  justify-content: center;
+  width: 896px;
+  height: 62px;
+  border-radius: 60px;
+  border-style: none;
+  background-color: #ffb800;
+  opacity: 0.3;
+  color: white;
+  font-size: 2.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 @include iphoneProMax {
   .inputComponent {
     margin-bottom: 10px;
@@ -92,7 +107,7 @@
   .rangeInputContainer {
     width: 242px;
   }
-  
+
   .inputBtn {
     height: 50px;
     font-size: 1.125rem;
@@ -123,6 +138,12 @@
     width: 80px;
     height: 50px;
     font-size: 1rem;
+  }
+
+  .submitBtn {
+    width: 100%;
+    font-size: 1.5rem;
+    margin-top: 30px;
   }
 }
 
@@ -169,6 +190,12 @@
     width: 80px;
     height: 50px;
     font-size: 1rem;
+  }
+
+  .submitBtn {
+    width: 100%;
+    font-size: 1.5rem;
+    margin-top: 20px;
   }
 }
 
@@ -222,8 +249,18 @@
     font-size: 1.5rem;
     margin-left: 5px;
   }
+
+  .submitBtn {
+    width: 100%;
+    font-size: 2.25rem;
+    margin-top: 40px;
+  }
 }
 
 @include desktop {
-
+  .submitBtn {
+    width: 100%;
+    font-size: 2.25rem;
+    margin-top: 40px;
+  }
 }
