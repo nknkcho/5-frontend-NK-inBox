@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { getRequest } from "../../utils/fetchData";
 import styles from "./SettingList.module.scss";
 import ModalForm from "../../components/upload/ModalForm";
 
@@ -35,9 +36,13 @@ export const GoBackButton = () => {
   );
 };
 
+interface CategoryProps {
+  category: string;
+}
+
 // export 이유 : Info 페이지에 동일한 컴포넌트를 사용하기 때문
-export const Category: React.FC<{ category: String }> = (props) => {
-  return <p className={styles.text}>{props.category}</p>;
+export const Category: React.FC<CategoryProps> = (props: CategoryProps) => {
+  return <p className={styles.text}>{props.category || "Info"}</p>;
 };
 
 export default function SettingList() {
@@ -49,50 +54,56 @@ export default function SettingList() {
 
   // 페이지 첫 로딩(혹은 새로고침) 시, 기존 Setting 값을 유지하기 위해 useEffect 사용
   useEffect(() => {
-    const selectedFilter = localStorage.getItem("filter") || "ON"
-    if(selectedFilter === "OFF"){
-      setOnBtnClick(true)
+    const selectedFilter = localStorage.getItem("filter");
+    if (selectedFilter === "off") {
+      setOnBtnClick(true);
     }
-    const selectedRange = localStorage.getItem("range") || "FEBE"
-    if(selectedRange === "FE"){
-      setRangeRightClick(true)
-    } else if (selectedRange === "BE"){
-      setRangeLeftClick(true)
+    const selectedRange = localStorage.getItem("range") || "febe";
+    if (selectedRange === "fe") {
+      setRangeRightClick(true);
+    } else if (selectedRange === "be") {
+      setRangeLeftClick(true);
     }
-  }, [onBtnClick, rangeLeftClick, rangeRightClick])
+  }, [onBtnClick, rangeLeftClick, rangeRightClick]);
 
-  const handleFilterClick = (e: { target: HTMLInputElement; }) => {
-    // 유저가 선택된 버튼을 또 한 번 누를 경우, 클릭한 버튼과 설정값이 달라지기 때문에 해당 경우를 포함하여 조건문 작성
-    if(e.target.value == "ON" && onBtnClick == false){
-      localStorage.setItem("filter", "OFF");
-    } else if (e.target.value == "OFF" && onBtnClick == true){
-      localStorage.setItem("filter", "ON")
-    } else {
-      localStorage.setItem("filter", e.target.value)
+  const handleFilterClick = async (e: { target: HTMLInputElement }) => {
+    try {
+      // 유저가 선택된 버튼을 또 한 번 누를 경우, 클릭한 버튼과 설정값이 달라지기 때문에 해당 경우를 포함하여 조건문 작성
+      if (e.target.value == "on" && onBtnClick == false) {
+        localStorage.setItem("filter", "off");
+      } else if (e.target.value == "off" && onBtnClick == true) {
+        localStorage.setItem("filter", "on");
+      } else {
+        localStorage.setItem("filter", e.target.value);
+      }
+      setOnBtnClick((current) => !current);
+      const result = await getRequest(`filters/${e.target.value}`);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
     }
-    setOnBtnClick((current) => !current);
   };
 
   const handleRangeLeftClick = () => {
     if (rangeRightClick === true) {
-      localStorage.setItem("range", "FE");
+      localStorage.setItem("range", "fe");
       return rangeLeftClick === false;
-    } else if (rangeLeftClick === false && rangeRightClick === false){
-      localStorage.setItem("range", "BE");
+    } else if (rangeLeftClick === false && rangeRightClick === false) {
+      localStorage.setItem("range", "be");
     } else {
-      localStorage.setItem("range", "FEBE");
+      localStorage.setItem("range", "febe");
     }
     setRangeLeftClick((current) => !current);
   };
 
   const handleRangeRightClick = () => {
     if (rangeLeftClick === true) {
-      localStorage.setItem("range", "BE");
+      localStorage.setItem("range", "be");
       return rangeRightClick === false;
-    } else if (rangeLeftClick === false && rangeRightClick === false){
-      localStorage.setItem("range", "FE");
+    } else if (rangeLeftClick === false && rangeRightClick === false) {
+      localStorage.setItem("range", "fe");
     } else {
-      localStorage.setItem("range", "FEBE");
+      localStorage.setItem("range", "febe");
     }
     setRangeRightClick((current) => !current);
   };
@@ -105,13 +116,13 @@ export default function SettingList() {
           <Category category={"Filter"} />
           <div>
             <Button
-              value="ON"
+              value="on"
               cb={handleFilterClick}
               btnClick={onBtnClick}
               option={"ON"}
             />
             <Button
-              value="OFF"
+              value="off"
               cb={handleFilterClick}
               btnClick={!onBtnClick}
               option={"OFF"}
@@ -132,13 +143,13 @@ export default function SettingList() {
           <Category category={"Range"} />
           <div>
             <Button
-              value="FE"
+              value="fe"
               cb={handleRangeLeftClick}
               btnClick={rangeLeftClick}
               option={"FE"}
             />
             <Button
-              value="BE"
+              value="be"
               cb={handleRangeRightClick}
               btnClick={rangeRightClick}
               option={"BE"}

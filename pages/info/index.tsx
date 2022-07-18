@@ -21,7 +21,7 @@ export default function Intro() {
           please contact me through to menu.
         </p>
         <div className={styles.optionRow}>
-          <Category category={"Info"}/>
+          <Category />
           <GoBackButton />
         </div>
       </div>
