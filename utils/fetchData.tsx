@@ -1,6 +1,6 @@
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const postRequest = async(path: string, body: any) => {
+export const postRequest = async (path: string, body: object) => {
   const res = await fetch(`${baseUrl}/${path}`, {
     body: JSON.stringify(body),
     method: "POST",
@@ -10,8 +10,7 @@ export const postRequest = async(path: string, body: any) => {
     credentials: "include",
   })
 
-  const data = await res.json();
-  return data
+  return res
 }
 
 export const getRequest = async (path: string) => {
