@@ -29,10 +29,7 @@ export default function ModalForm(props: { closeModal: Function }) {
   const onDrop = (files: any) => {
     const acceptedFiles = files[0];
     setFileKey(
-      "upload/" +
-        sha256(acceptedFiles.name).toString() +
-        "." +
-        acceptedFiles.type.substring(6)
+      `${sha256(acceptedFiles.name).toString()}.${acceptedFiles.type.substring(6)}`
     );
     setProgress(0);
     uploadToBucket(acceptedFiles);
@@ -45,7 +42,7 @@ export default function ModalForm(props: { closeModal: Function }) {
       name: string | CryptoJS.lib.WordArray;
     } | null
   ) => {
-    if (selectedFile === null || undefined) {
+    if (!selectedFile) {
       return;
     }
 
@@ -55,10 +52,7 @@ export default function ModalForm(props: { closeModal: Function }) {
       Body: selectedFile,
       Bucket: process.env.NEXT_PUBLIC_BUCKET_NAME,
       Key:
-        "upload/" +
-        sha256(selectedFile.name).toString() +
-        "." +
-        selectedFile.type.substring(6),
+        `${sha256(selectedFile.name).toString()}.${selectedFile.type.substring(6)}`,
     };
 
     // FIXME: params : No overload matches this call. 이라는 에러의 의미?
@@ -99,6 +93,7 @@ export default function ModalForm(props: { closeModal: Function }) {
         </button>
         <h2 className={styles.modalTitle}>Upload your Box</h2>
         <form className={styles.formContainer}>
+          {/* FIXME: 아래 부분 함수로 바꾸어 코드 정리하기 */}
           <section>
             <div
               {...getRootProps({
