@@ -1,7 +1,7 @@
 import Header from "../../components/UI/Header";
 import PortfolioContent from "../../components/portfolio/PortfolioContent";
 import { getRequest } from "../../utils/fetchData";
-import styles from "./portfolios.module.scss";
+import styles from "../../styles/portfolios.module.scss";
 import { InferGetStaticPropsType } from "next";
 
 type Content = {

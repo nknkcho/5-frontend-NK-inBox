@@ -2,7 +2,7 @@ import Image from "next/image";
 import MenuList from "../../components/UI/HeaderMenu";
 import BoxIcon from "../../components/UI/FormBox";
 import homePic from "../../public/home.jpg";
-import styles from "../home/home.module.scss";
+import styles from "../../styles/home.module.scss";
 
 export default function Home() {
   return (
