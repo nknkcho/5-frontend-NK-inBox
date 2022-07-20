@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Header from "../../components/UI/Header";
-import styles from "./info.module.scss";
+import styles from "../../styles/info.module.scss";
 
 const Category = dynamic((): Promise<any> => import("../../components/setting/SettingList").then((module) => module.Category), {ssr: false})
 const GoBackButton = dynamic((): Promise<any> => import("../../components/setting/SettingList").then((module) => module.GoBackButton), {ssr: false})
