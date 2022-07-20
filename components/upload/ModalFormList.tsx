@@ -45,7 +45,7 @@ const List = ({
 
 export default function FormList(props: { path: string }) {
   // Range 버튼 관련 상태
-  const [enteredRange, setEnteredRange] = useState("FE");
+  const [enteredRange, setEnteredRange] = useState("fe");
   const [onBtnClick, setOnBtnClick] = useState(false);
   // input의 스타일 관련 상태
   const [checkTitle, setCheckTitle] = useState(true);
@@ -94,7 +94,7 @@ export default function FormList(props: { path: string }) {
     e.preventDefault();
     try {
       setSendCodeBtnText("RESEND");
-      const result = await postRequest("portfolios/email", { email });
+      const result: any = await postRequest("portfolios/email", { email });
       console.log(result);
       setGetConfirmIdx(result.confirmIdx);
     } catch (error) {
@@ -120,32 +120,28 @@ export default function FormList(props: { path: string }) {
       case "title":
         titleValid = value.length > 2;
         formErrors.title = titleValid
-          ? setCheckTitle(() => true)
-          : setCheckTitle(() => false);
+          ? setCheckTitle(true)
+          : setCheckTitle(false);
         break;
       case "date":
         dateValid = validDateString(value);
-        formErrors.date = dateValid
-          ? setCheckDate(() => true)
-          : setCheckDate(() => false);
+        formErrors.date = dateValid ? setCheckDate(true) : setCheckDate(false);
         break;
       case "about":
         aboutValid = value.length > 2;
         formErrors.about = aboutValid
-          ? setCheckAbout(() => true)
-          : setCheckAbout(() => false);
+          ? setCheckAbout(true)
+          : setCheckAbout(false);
         break;
       case "email":
         value ? "" : setSendCodeBtnText("SEND CODE"),
           (emailValid = validEmailRegex.test(value));
         formErrors.email = emailValid
-          ? setCheckEmail(() => true)
-          : setCheckEmail(() => false);
+          ? setCheckEmail(true)
+          : setCheckEmail(false);
       case "code":
         codeValid = value.length == 6;
-        formErrors.code = codeValid
-          ? setCheckCode(() => true)
-          : setCheckCode(() => false);
+        formErrors.code = codeValid ? setCheckCode(true) : setCheckCode(false);
       default:
         break;
     }
@@ -167,7 +163,7 @@ export default function FormList(props: { path: string }) {
     setOnBtnClick((current) => !current);
     // 클릭한 버튼의 값을 state에 업데이트
     const btnValue: HTMLInputElement = e.currentTarget;
-    setEnteredRange(btnValue.value);
+    setEnteredRange(btnValue.value.toLowerCase());
   };
 
   // 부모 컴포넌트로부터 파일 key 값을 받아왔는 지 확인하는 함수
@@ -194,10 +190,10 @@ export default function FormList(props: { path: string }) {
       formValid = false;
       return false;
     }
-    formValid = true
-    return true
-  }
-  validationCheck()
+    formValid = true;
+    return true;
+  };
+  validationCheck();
 
   // form 전체 데이터를 formListData에 객체화
   const formListData = {
@@ -211,7 +207,6 @@ export default function FormList(props: { path: string }) {
     filePath: props.path,
   };
 
-
   // validationData 중 하나라도 false가 있을 경우 최종 유효성 검사 변수인 formValid가 false
   const submitFormDataHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -220,12 +215,12 @@ export default function FormList(props: { path: string }) {
         console.log(validationData);
         console.log(formListData);
         alert("Please check your input");
-        return
+        return;
       }
       console.log(formListData);
       const result = await postRequest("portfolios", formListData);
       console.log(result);
-      return
+      return;
     } catch (error) {
       console.log(error);
     }
@@ -281,7 +276,7 @@ export default function FormList(props: { path: string }) {
         />
         <List
           text={"About."}
-          maxLength={30}
+          maxLength={20}
           placeholder={"Write a brief introduction"}
           name={"about"}
           option={about}
@@ -290,38 +285,39 @@ export default function FormList(props: { path: string }) {
         />
         <div className={styles.inputComponent}>
           <div className={styles.inputLabel}>Email.</div>
-          <div>
-            <div className={styles.emailInputContainer}>
-              <input
-                className={styles.emailBox}
-                name="email"
-                type="email"
-                placeholder="example@email.com"
-                value={email}
-                onChange={inputHandler}
-              />
-              <button
-                type="submit"
-                className={styles.confirmBtn}
-                style={{ opacity: checkEmail ? 1 : 0.3 }}
-                disabled={checkEmail ? false : true}
-                onClick={handleSendCode}
-              >
-                {sendCodeBtnText}
-              </button>
-            </div>
+          <div className={styles.emailInputContainer}>
             <input
-              className={styles.inputBox}
-              maxLength={6}
-              required
-              name="code"
-              type="text"
-              value={code}
-              placeholder="Input Verification code"
+              className={styles.emailBox}
+              name="email"
+              type="email"
+              placeholder="example@email.com"
+              value={email}
               onChange={inputHandler}
-              style={{ borderColor: checkCode ? "" : "red" }}
             />
+            <button
+              type="submit"
+              className={styles.confirmBtn}
+              style={{ opacity: checkEmail ? 1 : 0.3 }}
+              disabled={checkEmail ? false : true}
+              onClick={handleSendCode}
+            >
+              {sendCodeBtnText}
+            </button>
           </div>
+        </div>
+        <div className={styles.inputComponent}>
+          <div className={styles.inputLabel}></div>
+          <input
+            className={styles.inputBox}
+            maxLength={6}
+            required
+            name="code"
+            type="text"
+            value={code}
+            placeholder="Input Verification code"
+            onChange={inputHandler}
+            style={{ borderColor: checkCode ? "" : "red" }}
+          />
         </div>
       </div>
       <div>

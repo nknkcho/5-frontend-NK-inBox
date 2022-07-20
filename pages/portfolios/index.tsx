@@ -29,8 +29,7 @@ export default function DetailPage({ content }: InferGetStaticPropsType<typeof g
 
 export async function getStaticProps() {
 	const res = await getRequest("portfolios/file");
-  const content: Content[] = await res.json();
-
+  const content: Content = await res.json();
 	return {
 		props: {
 			content

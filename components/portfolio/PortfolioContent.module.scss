@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 60px;
+  margin: 60px 0 0 0;
   width: 100%;
   text-align: center;
 }
@@ -12,18 +12,40 @@
 .portfolioFilter {
   display: flex;
   flex-direction: column;
-  width: 1080px;
+  justify-content: center;
+  width: 100%;
   height: 698px;
+}
+
+
+/* animation styles */
+@keyframes fade-in-keyframes {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes fade-out-keyframes {
+  from {opacity: 1}
+  to {opacity: 0}
+}
+
+.fadeInClass {
+  animation: fade-in-keyframes 1s alternate;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
 }
 
 .nextBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 732px;
+  width: 600px;
   height: 62px;
   background-color: white;
-  color: #FFB800;
+  color: #ffb800;
   font-size: 2.25rem;
   border-radius: 60px;
 }
@@ -32,10 +54,19 @@
   font-size: 1.5rem;
   color: white;
   font-weight: 700;
+  margin: 0;
 }
 
 .footerItem {
-  width: 40%;
+  width: 100%;
+}
+
+.footerTitle {
+  text-align: left;
+}
+
+.footerDescription {
+  text-align: right;
 }
 
 @include iphoneProMax {
@@ -45,25 +76,25 @@
 
   .footer {
     width: 319px;
-    margin-top: 0px;
+    margin-top: 20px;
     flex-direction: column-reverse;
   }
 
   .footerItem {
     width: 100%;
 
-    &:nth-child(1){
+    &:nth-child(1) {
       order: 3;
       margin-bottom: 10px;
     }
 
-    &:nth-child(2){
+    &:nth-child(2) {
       order: 1;
     }
 
-    &:nth-child(3){
+    &:nth-child(3) {
       order: 2;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   }
 
@@ -79,6 +110,14 @@
     width: 335px;
     height: 509px;
   }
+
+  .footerTitle {
+    text-align: center;
+  }
+
+  .footerDescription {
+    text-align: center;
+  }
 }
 
 @include ipadMini {
@@ -88,25 +127,25 @@
 
   .footer {
     width: 319px;
-    margin-top: 0px;
+    margin-top: 25px;
     flex-direction: column-reverse;
   }
 
   .footerItem {
     width: 100%;
 
-    &:nth-child(1){
+    &:nth-child(1) {
       order: 3;
       margin-bottom: 10px;
     }
 
-    &:nth-child(2){
+    &:nth-child(2) {
       order: 1;
     }
 
-    &:nth-child(3){
+    &:nth-child(3) {
       order: 2;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   }
 
@@ -122,6 +161,14 @@
     width: 364px;
     height: 440px;
   }
+
+  .footerTitle {
+    text-align: center;
+  }
+
+  .footerDescription {
+    text-align: center;
+  }
 }
 
 @include ipadPro {
@@ -131,25 +178,25 @@
 
   .footer {
     width: 668px;
-    margin-top: 0px;
+    margin-top: 30px;
     flex-direction: column-reverse;
   }
 
   .footerItem {
     width: 100%;
 
-    &:nth-child(1){
+    &:nth-child(1) {
       order: 3;
       margin-bottom: 10px;
     }
 
-    &:nth-child(2){
+    &:nth-child(2) {
       order: 1;
     }
 
-    &:nth-child(3){
+    &:nth-child(3) {
       order: 2;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   }
 
@@ -165,6 +212,14 @@
     width: 668px;
     height: 626px;
   }
+
+  .footerTitle {
+    text-align: center;
+  }
+
+  .footerDescription {
+    text-align: center;
+  }
 }
 
 @include desktop {
@@ -174,25 +229,25 @@
 
   .footer {
     width: 924px;
-    margin-top: 0px;
+    margin-top: 50px;
     flex-direction: column-reverse;
   }
 
   .footerItem {
     width: 100%;
 
-    &:nth-child(1){
+    &:nth-child(1) {
       order: 3;
       margin-bottom: 10px;
     }
 
-    &:nth-child(2){
+    &:nth-child(2) {
       order: 1;
     }
 
-    &:nth-child(3){
+    &:nth-child(3) {
       order: 2;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   }
 
@@ -207,5 +262,13 @@
     justify-content: center;
     width: 924px;
     height: 880px;
+  }
+
+  .footerTitle {
+    text-align: center;
+  }
+
+  .footerDescription {
+    text-align: center;
   }
 }
