@@ -95,7 +95,6 @@ export default function FormList(props: { path: string }) {
     try {
       setSendCodeBtnText("RESEND");
       const result: any = await postRequest("portfolios/email", { email });
-      console.log(result);
       setGetConfirmIdx(result.confirmIdx);
     } catch (error) {
       console.log(error);
@@ -212,14 +211,10 @@ export default function FormList(props: { path: string }) {
     e.preventDefault();
     try {
       if (validationCheck() == false) {
-        console.log(validationData);
-        console.log(formListData);
         alert("Please check your input");
         return;
       }
-      console.log(formListData);
       const result = await postRequest("portfolios", formListData);
-      console.log(result);
       return;
     } catch (error) {
       console.log(error);

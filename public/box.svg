@@ -1,0 +1,12 @@
+<svg width="288" height="222" viewBox="0 0 288 222" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M144 221L41.3851 175.697V146.533L103.982 174.223L144 111.608V221Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M144 221L246.615 175.697V146.533L184.385 173.855L144 111.608V221Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M144 21L41.3851 66.3038L144 111.608L246.615 66.3038L144 21Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M103.798 174.038L1 128.735L41.2015 66.3037L144 111.607L103.798 174.038Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M184.202 174.038L287 128.735L246.798 66.3037L144 111.607L184.202 174.038Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M144 21V111.608L41.2015 66.3038L144 21Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M144 21V111.608L41.2015 66.3038L144 21Z" fill="white" fill-opacity="0.1" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M246.798 66.3038L144 21V111.608L246.798 66.3038Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M246.798 66.3038L144 21V111.608L246.798 66.3038Z" fill="white" fill-opacity="0.2"/>
+<path d="M144 21L144 1" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

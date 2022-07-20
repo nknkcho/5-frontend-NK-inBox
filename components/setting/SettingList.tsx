@@ -5,7 +5,6 @@ import { getRequest } from "../../utils/fetchData";
 import styles from "./SettingList.module.scss";
 import ModalForm from "../../components/upload/ModalForm";
 
-// TODO: String과 string의 차이 : String == new String(), string = ""
 export const Button: React.FC<{
   cb: Function;
   btnClick: Boolean;
@@ -77,14 +76,14 @@ export default function SettingList() {
         localStorage.setItem("filter", e.target.value);
       }
       setOnBtnClick((current) => !current);
-      const result = await getRequest(`filters/${e.target.value}`);
-      console.log(result);
+      await getRequest(`filters/${e.target.value}`);
+      await getRequest(`cookies`);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleRangeLeftClick = () => {
+  const handleRangeLeftClick = async () => {
     if (rangeRightClick === true) {
       localStorage.setItem("range", "fe");
       return rangeLeftClick === false;
@@ -93,10 +92,12 @@ export default function SettingList() {
     } else {
       localStorage.setItem("range", "febe");
     }
+    await getRequest(`portfolios/range/fe`);
+    await getRequest(`cookies`);
     setRangeLeftClick((current) => !current);
   };
 
-  const handleRangeRightClick = () => {
+  const handleRangeRightClick = async () => {
     if (rangeLeftClick === true) {
       localStorage.setItem("range", "be");
       return rangeRightClick === false;
@@ -105,6 +106,8 @@ export default function SettingList() {
     } else {
       localStorage.setItem("range", "febe");
     }
+    await getRequest(`portfolios/range/be`);
+    await getRequest(`cookies`);
     setRangeRightClick((current) => !current);
   };
 
