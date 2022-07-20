@@ -10,7 +10,8 @@ export const postRequest = async (path: string, body: object) => {
     credentials: "include",
   })
 
-  return res
+  const data = await res.json();
+  return data
 }
 
 export const getRequest = async (path: string) => {
@@ -19,6 +20,5 @@ export const getRequest = async (path: string) => {
     credentials: "include",
   })
 
-  // const data = await res.json();
   return res
 }
