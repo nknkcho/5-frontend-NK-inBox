@@ -1,16 +1,20 @@
 # Base 이미지
-FROM node:18-alpine
+FROM node:18.4.0-alpine
 
 
 # 작업 공간
 RUN mkdir /app
 WORKDIR /app
+ADD . /app
+RUN npm install -g npm@8.15.0
+RUN npm install
 
-# 빌드된 산출물 도커 이미지로 복사
-RUN mkdir ./.next
-COPY ./next ./.next
+ENV NODE_ENV production
 
-EXPOSE 80
+RUN npm run build
+
+
+EXPOSE 3000
 
 # 실행 명령어
-ENTRYPOINT ["npx", "next", "start"]
+ENTRYPOINT ["npm","start"]
