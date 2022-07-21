@@ -1,0 +1,13 @@
+*.md
+docker-compose.yml
+globalConfig.json
+e2e
+fixtures
+*.test.*
+node_modules
+.vercel
+.next
+.env
+Dockerfile
+.git
+README.md
