@@ -1,10 +1,16 @@
-FROM node:alpine
+# Base 이미지
+FROM node:18-alpine
+
+# 빌드된 산출물을 실행시키기 위해 필요한 serve 모듈
+RUN npm install -g serve
+
+# 작업 공간
+RUN mkdir /app
 WORKDIR /app
-COPY package*.json yarn.lock ./
-RUN npm install
-COPY . .
-RUN npm run build
 
-EXPOSE 21000
+# 빌드된 산출물 도커 이미지로 복사
+RUN mkdir ./build
+COPY ./build ./build
 
-CMD ["npm", "run", "dev"]
+# 실행 명령어
+ENTRYPOINT ["serve", "-s", "build"]
