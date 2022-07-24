@@ -10,8 +10,11 @@ export const postRequest = async (path: string, body: object) => {
     credentials: "include",
   })
 
-  const data = await res.json();
-  return data
+  if(res.status === 200){
+    const data = await res.json();
+    return data
+  }
+  return res.status
 }
 
 export const getRequest = async (path: string) => {

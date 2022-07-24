@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Router from "next/router"
 import styles from "./ModalFormList.module.scss";
 import { postRequest } from "../../utils/fetchData";
 
@@ -210,12 +211,17 @@ export default function FormList(props: { path: string }) {
   const submitFormDataHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      if (validationCheck() == false) {
+      const result = await postRequest("portfolios", formListData);
+      if(result === 400){
         alert("Please check your input");
         return;
       }
-      const result = await postRequest("portfolios", formListData);
-      return;
+      if(result === 201){
+        alert("Form submitted!");
+        Router.reload();
+        return;
+      }
+      return
     } catch (error) {
       console.log(error);
     }
