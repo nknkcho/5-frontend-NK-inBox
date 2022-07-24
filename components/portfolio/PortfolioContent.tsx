@@ -17,27 +17,35 @@ type Content = {
 };
 
 export default function PortfolioFooter(props: { content: Content }) {
+  // 영상의 경로를 return하는 함수
   const videoPath = (fileName: string, extension: string) => {
     const path = `https://inbox-portfolio.s3.ap-northeast-2.amazonaws.com/${fileName}.${extension}`;
     return path;
   };
+  // 페이지 첫 로딩 시, 받아오는 데이터를 받아오는 변수
   const portfolioData = props.content;
+  // 포트폴리오 비디오 source의 상태
   const [videoSrc, setVideoSrc] = useState(
     videoPath(portfolioData.fileName, portfolioData.extension)
   );
+  // 포트폴리오 비디오 확장자의 상태
   const [videoType, setVideoType] = useState(
     `video/${portfolioData.extension}`
   );
+  // 포트폴리오 제목의 상태
   const [title, setTitle] = useState(portfolioData.title);
+  // 포트폴리오 업로드일의 상태
   const [date, setDate] = useState(portfolioData.portfolioDate);
+  // 포트폴리오 설명의 상태
   const [about, setAbout] = useState(portfolioData.about);
+  // setting 설정에 따라 filter 이미지를 보여줄 것인지를 결정하는 상태
   const [showImg, setShowImg] = useState(true);
-  const [changeImg, setChangeImg] = useState(false);
+  // 포트폴리오 전환 버튼 클릭 시 발생하는 이벤트
   const onclickHandler = async () => {
-    setChangeImg((current) => !current);
+    await getRequest(`cookies`);
+    setAnimation((current) => !current);
     const res = await getRequest("portfolios/file");
     const newData = await res.json();
-    console.log(newData);
     const newPath = videoPath(newData.fileName, newData.extension);
     setVideoSrc(newPath);
     setVideoType(`video/${newData.extension}`);
@@ -45,8 +53,13 @@ export default function PortfolioFooter(props: { content: Content }) {
     setDate(newData.portfolioDate);
     setAbout(newData.about);
   };
-  const portfolioFilter = filter[Math.floor(Math.random() * filter.length)];
 
+  // 필터 이미지 불러오기
+  const portfolioFilter = filter[Math.floor(Math.random() * filter.length)];
+  // 이미지 애니메이션 변경을 위한 상태값
+  const [animation, setAnimation] = useState(false);
+
+  // 페이지 로딩 시, filter 세팅값에 따라 이미지를 보여줄 것인지에 따라 상태값 업데이트
   useEffect(() => {
     const selectedFilter = localStorage.getItem("filter");
     if (selectedFilter === "on") {
@@ -59,16 +72,47 @@ export default function PortfolioFooter(props: { content: Content }) {
   return (
     <>
       <div className={styles.portfolioFilter}>
-        {showImg && (
-          <div className={ changeImg ? styles.fadeInClass : ""}>
-            <Image
-              alt="Inbox filter for portfolios"
-              src={portfolioFilter}
-              layout="responsive"
-              width={100}
-              height={39}
-            />
-          </div>
+        {showImg && animation && (
+          <>
+            <div className={styles.imgWrapper}>
+              <div
+                className={
+                  animation
+                    ? `${styles.frontImg} ${styles.fadeInClass}`
+                    : `${styles.frontImg}`
+                }
+              >
+                <Image
+                  alt="Inbox filter for portfolios"
+                  src={portfolioFilter}
+                  layout="responsive"
+                  width={100}
+                  height={40}
+                />
+              </div>
+            </div>
+          </>
+        )}
+        {showImg && !animation && (
+          <>
+            <div className={styles.imgWrapper}>
+              <div
+                className={
+                  animation
+                    ? `${styles.frontImg}`
+                    : `${styles.frontImg} ${styles.fadeInClass}`
+                }
+              >
+                <Image
+                  alt="Inbox filter for portfolios"
+                  src={portfolioFilter}
+                  layout="responsive"
+                  width={100}
+                  height={40}
+                />
+              </div>
+            </div>
+          </>
         )}
         {!showImg && (
           <video className={styles.video} key={videoSrc} controls>

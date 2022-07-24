@@ -13,7 +13,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  align-items: center;
+  width: 1800px;
   height: 698px;
 }
 
@@ -31,6 +32,25 @@
 
 .fadeInClass {
   animation: fade-in-keyframes 1s alternate;
+}
+
+.imgWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 1800px;
+  height: 698px;
+}
+
+.frontImg {
+  position: relative;
+}
+
+.backImg {
+  position: relative;
 }
 
 .video {
@@ -70,6 +90,11 @@
 }
 
 @include iphoneProMax {
+  .imgWrapper {
+    width: 335px;
+    height: 509px;
+  }
+
   .description {
     font-size: 0.875rem;
   }
@@ -121,6 +146,11 @@
 }
 
 @include ipadMini {
+  .imgWrapper {
+    width: 364px;
+    height: 578px;
+  }
+
   .description {
     font-size: 0.875rem;
   }
@@ -172,6 +202,11 @@
 }
 
 @include ipadPro {
+  .imgWrapper {
+    width: 668px;
+    height: 480px;
+  }
+
   .description {
     font-size: 1.125rem;
   }
@@ -223,6 +258,11 @@
 }
 
 @include desktop {
+  .imgWrapper {
+    width: 924px;
+    height: 704px;
+  }
+
   .description {
     font-size: 1.5rem;
   }
