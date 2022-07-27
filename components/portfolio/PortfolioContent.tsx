@@ -85,9 +85,8 @@ export default function PortfolioFooter(props: { content: Content }) {
                 <Image
                   alt="Inbox filter for portfolios"
                   src={portfolioFilter}
-                  layout="responsive"
-                  width={100}
-                  height={40}
+                  layout="fill"
+                  objectFit="cover"
                 />
               </div>
             </div>
@@ -106,9 +105,8 @@ export default function PortfolioFooter(props: { content: Content }) {
                 <Image
                   alt="Inbox filter for portfolios"
                   src={portfolioFilter}
-                  layout="responsive"
-                  width={100}
-                  height={40}
+                  layout="fill"
+                  objectFit="cover"
                 />
               </div>
             </div>
