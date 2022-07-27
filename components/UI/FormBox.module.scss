@@ -8,6 +8,12 @@
   cursor: pointer;
 }
 
+@include iphonePro {
+  .homeBox {
+    width: 100px;
+    height: 100px;
+  }
+}
 
 @include iphoneProMax {
   .homeBox {
