@@ -43,7 +43,6 @@ export default function PortfolioFooter(props: { content: Content }) {
   // 포트폴리오 전환 버튼 클릭 시 발생하는 이벤트
   const onclickHandler = async () => {
     await getRequest(`cookies`);
-    setAnimation((current) => !current);
     const res = await getRequest("portfolios/file");
     const newData = await res.json();
     const newPath = videoPath(newData.fileName, newData.extension);
@@ -52,6 +51,7 @@ export default function PortfolioFooter(props: { content: Content }) {
     setTitle(newData.title);
     setDate(newData.portfolioDate);
     setAbout(newData.about);
+    setAnimation((current) => !current);
   };
 
   // 필터 이미지 불러오기
@@ -74,41 +74,39 @@ export default function PortfolioFooter(props: { content: Content }) {
       <div className={styles.portfolioFilter}>
         {showImg && animation && (
           <>
-            <div className={styles.imgWrapper}>
-              <div
-                className={
-                  animation
-                    ? `${styles.frontImg} ${styles.fadeInClass}`
-                    : `${styles.frontImg}`
-                }
-              >
-                <Image
-                  alt="Inbox filter for portfolios"
-                  src={portfolioFilter}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
+            <div
+              className={
+                animation
+                  ? `${styles.imgWrapper} ${styles.fadeInClass}`
+                  : `${styles.imgWrapper}`
+              }
+            >
+              <Image
+                alt="Inbox filter for portfolios"
+                src={portfolioFilter}
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
             </div>
           </>
         )}
         {showImg && !animation && (
           <>
-            <div className={styles.imgWrapper}>
-              <div
-                className={
-                  animation
-                    ? `${styles.frontImg}`
-                    : `${styles.frontImg} ${styles.fadeInClass}`
-                }
-              >
-                <Image
-                  alt="Inbox filter for portfolios"
-                  src={portfolioFilter}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
+            <div
+              className={
+                animation
+                  ? `${styles.imgWrapper}`
+                  : `${styles.imgWrapper} ${styles.fadeInClass}`
+              }
+            >
+              <Image
+                alt="Inbox filter for portfolios"
+                src={portfolioFilter}
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
             </div>
           </>
         )}
