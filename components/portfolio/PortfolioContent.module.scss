@@ -4,8 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 60px 0 0 0;
-  width: 100%;
+  margin: 0 0 20px 0;
+  width: 1760px;
   text-align: center;
 }
 
@@ -14,8 +14,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 1800px;
-  height: 698px;
+  width: 100vw;
+  height: 75vh;
 }
 
 
@@ -38,24 +38,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
-  margin: 0;
-  padding: 0;
+  position: relative;
   width: 1800px;
   height: 698px;
 }
 
-.frontImg {
-  position: relative;
-}
-
-.backImg {
-  position: relative;
-}
-
 .video {
-  width: 100%;
-  height: 100%;
+  width: 1800px;
+  height: 698px;
+  background-color: black;
 }
 
 .nextBtn {
@@ -89,8 +80,62 @@
   text-align: right;
 }
 
+@include iphonePro {
+  .imgWrapper,
+  .video {
+    width: 335px;
+    height: 400px;
+  }
+
+  .description {
+    font-size: 0.875rem;
+  }
+
+  .footer {
+    width: 319px;
+    flex-direction: column-reverse;
+  }
+
+  .footerItem {
+    &:nth-child(1) {
+      order: 3;
+      margin-bottom: 10px;
+    }
+
+    &:nth-child(2) {
+      order: 1;
+    }
+
+    &:nth-child(3) {
+      order: 2;
+      margin-bottom: 10px;
+    }
+  }
+
+  .nextBtn {
+    margin: auto;
+    width: 319px;
+    height: 49px;
+    font-size: 1.5rem;
+  }
+
+  .portfolioFilter {
+    width: 335px;
+    height: 500px;
+  }
+
+  .footerTitle {
+    text-align: center;
+  }
+
+  .footerDescription {
+    text-align: center;
+  }
+}
+
 @include iphoneProMax {
-  .imgWrapper {
+  .imgWrapper,
+  .video {
     width: 335px;
     height: 509px;
   }
@@ -106,8 +151,6 @@
   }
 
   .footerItem {
-    width: 100%;
-
     &:nth-child(1) {
       order: 3;
       margin-bottom: 10px;
@@ -131,7 +174,6 @@
   }
 
   .portfolioFilter {
-    justify-content: center;
     width: 335px;
     height: 509px;
   }
@@ -146,7 +188,8 @@
 }
 
 @include ipadMini {
-  .imgWrapper {
+  .imgWrapper,
+  .video {
     width: 364px;
     height: 578px;
   }
@@ -162,8 +205,6 @@
   }
 
   .footerItem {
-    width: 100%;
-
     &:nth-child(1) {
       order: 3;
       margin-bottom: 10px;
@@ -187,7 +228,6 @@
   }
 
   .portfolioFilter {
-    justify-content: center;
     width: 364px;
     height: 440px;
   }
@@ -202,7 +242,8 @@
 }
 
 @include ipadPro {
-  .imgWrapper {
+  .imgWrapper,
+  .video {
     width: 668px;
     height: 480px;
   }
@@ -218,8 +259,6 @@
   }
 
   .footerItem {
-    width: 100%;
-
     &:nth-child(1) {
       order: 3;
       margin-bottom: 10px;
@@ -243,7 +282,6 @@
   }
 
   .portfolioFilter {
-    justify-content: center;
     width: 668px;
     height: 626px;
   }
@@ -258,7 +296,8 @@
 }
 
 @include desktop {
-  .imgWrapper {
+  .imgWrapper,
+  .video {
     width: 924px;
     height: 704px;
   }
@@ -274,8 +313,6 @@
   }
 
   .footerItem {
-    width: 100%;
-
     &:nth-child(1) {
       order: 3;
       margin-bottom: 10px;
@@ -299,7 +336,6 @@
   }
 
   .portfolioFilter {
-    justify-content: center;
     width: 924px;
     height: 880px;
   }
