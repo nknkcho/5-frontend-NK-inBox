@@ -42,7 +42,7 @@ export default function PortfolioFooter(props: { content: Content }) {
   const [showImg, setShowImg] = useState(true);
   // 포트폴리오 전환 버튼 클릭 시 발생하는 이벤트
   const onclickHandler = async () => {
-    await getRequest(`cookies`);
+    //await getRequest(`cookies`);
     const res = await getRequest("portfolios/file");
     const newData = await res.json();
     const newPath = videoPath(newData.fileName, newData.extension);
