@@ -2,10 +2,21 @@ import { writeFileSync } from 'fs'
 import { globby } from 'globby'
 import prettier from 'prettier'
 
-async function generateSitemap() {
-  const getDate = new Date().toISOString();
+const Sitemap = () => {
+  return null;
+}
+
+// FIXME: 여기엔 어떤 타입을 넣어야 할까?
+export const getServerSideProps = async ({res} : any) => {
+  const getDate = new Date().toISOString()
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
-  const pages = await globby(['pages/**/*.tsx', 'pages/*.tsx', '!pages/_*.tsx', '!pages/404.tsx'])
+  const pages = await globby([
+    'pages/**/*.tsx',
+    'pages/*.tsx',
+    '!pages/_*.tsx',
+    '!pages/404.tsx',
+    '!pages/sitemap.xml.tsx',
+  ])
 
   const sitemap = `
   <?xml version="1.0" encoding="UTF-8"?>
@@ -29,6 +40,14 @@ async function generateSitemap() {
     parser: 'html',
   })
 
-  writeFileSync('public/sitemap.xml', formatted)
+  res.setHeader("Content-Type", "text/xml")
+  res.write(formatted)
+  res.end()
+  //writeFileSync('public/sitemap.xml', formatted)
+
+  return {
+    props: {}
+  }
 }
-generateSitemap()
+
+export default Sitemap;
