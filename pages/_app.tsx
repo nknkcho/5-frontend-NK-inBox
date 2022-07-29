@@ -2,10 +2,14 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import Script from "next/script";
+import { DefaultSeo } from "next-seo";
+
+import SEO from '../next-seo.config'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <DefaultSeo {...SEO} />
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}

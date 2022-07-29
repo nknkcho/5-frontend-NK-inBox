@@ -18,6 +18,18 @@
   font-size: 4rem;
   line-height: 100%;
   color: white;
+  margin: 60px 0 52px 0;
+}
+
+@include iphonePro {
+  .infoContainer {
+    margin: 0 20px;
+  }
+
+  .infoText {
+    margin: 150px 0 30px 0;
+    font-size: 1.5rem;
+  }
 }
 
 @include iphoneProMax {
