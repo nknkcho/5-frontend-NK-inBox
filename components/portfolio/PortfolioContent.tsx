@@ -5,25 +5,27 @@ import filter from '../../utils/filters'
 import { getRequest } from '../../utils/fetchData'
 
 type FilterImageProps = {
-  animation: boolean,
-  portfolioFilter: string | StaticImport,
+  animation: boolean
+  portfolioFilter: string | StaticImport
+  imgState: Function
 }
 
-export const FilterImage = (props : FilterImageProps) => {
+export const FilterImage = (props: FilterImageProps) => {
   return (
     <div
-            className={
-              props.animation ? `${styles.imgWrapper} ${styles.fadeInClass}` : `${styles.imgWrapper}`
-            }
-          >
-            <Image
-              alt="Inbox filter for portfolios"
-              src={props.portfolioFilter}
-              layout="fill"
-              objectFit="cover"
-              priority
-            />
-          </div>
+      className={
+        props.animation ? `${styles.imgWrapper} ${styles.fadeInClass}` : `${styles.imgWrapper}`
+      }
+      onClick={(e) => props.imgState(e)}
+    >
+      <Image
+        alt="Inbox filter for portfolios"
+        src={props.portfolioFilter}
+        layout="fill"
+        objectFit="cover"
+        priority
+      />
+    </div>
   )
 }
 
@@ -73,37 +75,40 @@ export default function PortfolioFooter(props: { content: Content }) {
     setDate(newData.portfolioDate)
     setAbout(newData.about)
     setAnimation(current => !current)
+    filterStatus()
+  }
+
+  // 필터 이미지 클릭시 필터 이미지가 없어지고 동영상이 나타나는 이벤트
+  const handleFilterImgClick = async () => {
+    setShowImg(false)
   }
 
   // 필터 이미지 불러오기
   const portfolioFilter = filter[Math.floor(Math.random() * filter.length)]
   // 이미지 애니메이션 변경을 위한 상태값
   const [animation, setAnimation] = useState(false)
-
-  // 페이지 로딩 시, filter 세팅값에 따라 이미지를 보여줄 것인지에 따라 상태값 업데이트
-  useEffect(() => {
+  const filterStatus = () => {
     const selectedFilter = localStorage.getItem('filter')
     if (selectedFilter === 'on') {
       setShowImg(true)
     } else {
       setShowImg(false)
     }
-  }, [showImg])
+  }
+
+  // 페이지 로딩 시, filter 세팅값에 따라 이미지를 보여줄 것인지에 따라 상태값 업데이트
+  useEffect(() => {
+    filterStatus()
+  }, [])
 
   return (
     <>
       <div className={styles.portfolioFilter}>
         {showImg && animation && (
-          <FilterImage
-          animation={animation}
-          portfolioFilter={portfolioFilter}
-          />
+          <FilterImage animation={animation} portfolioFilter={portfolioFilter} imgState={handleFilterImgClick} />
         )}
         {showImg && !animation && (
-          <FilterImage
-          animation={!animation}
-          portfolioFilter={portfolioFilter}
-          />
+          <FilterImage animation={!animation} portfolioFilter={portfolioFilter} imgState={handleFilterImgClick}/>
         )}
         {!showImg && (
           <video className={styles.video} key={videoSrc} controls>
