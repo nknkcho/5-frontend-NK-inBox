@@ -5,12 +5,14 @@ import { getRequest } from "../../utils/fetchData";
 import styles from "./SettingList.module.scss";
 import ModalForm from "../../components/upload/ModalForm";
 
-export const Button: React.FC<{
+type ButtonProps = {
   cb: Function;
-  btnClick: Boolean;
-  option: String;
+  btnClick: boolean;
+  option: string;
   value: string;
-}> = (props) => {
+}
+
+export const Button = (props : ButtonProps) => {
   return (
     <button
       className={styles.rangeBtn}
