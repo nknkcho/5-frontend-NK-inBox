@@ -25,6 +25,7 @@ export default function DetailPage({
     <>
 			<NextSeo
 				title="Portfolios"
+        description="개발자들의 멋진 포트폴리오를 확인해보세요! 커버 이미지를 클릭하면 포트폴리오 영상을 보실 수 있습니다."
 				canonical={`${metadata.meta.url}/portfolios`}
         openGraph={{ url: `${metadata.meta.url}/portfolios` }}
 			/>
