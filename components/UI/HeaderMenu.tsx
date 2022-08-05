@@ -15,7 +15,7 @@ export default function MenuList() {
             <Link href={"/setting"}>Setting</Link>
           </li>
           <li className={[styles.li, styles.secondLi].join(" ")}>
-            <a href="mailto:srirachacho@gmail.com,yeji1919@gmail.com">
+            <a href="mailto:inboxteamofficial@gmail.com">
               Contact
             </a>
           </li>
