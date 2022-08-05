@@ -6,7 +6,7 @@ FROM node:18.4.0-alpine
 RUN mkdir /app
 WORKDIR /app
 ADD . /app
-RUN npm install -g npm@8.15.0
+RUN npm install -g npm@8.16.0
 RUN npm install
 
 ENV NODE_ENV production

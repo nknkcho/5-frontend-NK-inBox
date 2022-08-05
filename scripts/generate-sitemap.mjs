@@ -1,14 +1,9 @@
-import { writeFileSync } from 'fs'
+import { writeFileSync } from 'fs';
 import { globby } from 'globby'
 import prettier from 'prettier'
 
-const Sitemap = () => {
-  return null;
-}
-
 // FIXME: 여기엔 어떤 타입을 넣어야 할까?
-export const getServerSideProps = async ({res} : any) => {
-  const getDate = new Date().toISOString()
+export const generateSitemap = async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   const pages = await globby([
     'pages/**/*.tsx',
@@ -18,6 +13,7 @@ export const getServerSideProps = async ({res} : any) => {
     '!pages/sitemap.xml.tsx',
   ])
 
+  // path 코드에 대한 예시를 적어두어야 친절한 코드
   const sitemap = `
   <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -27,7 +23,6 @@ export const getServerSideProps = async ({res} : any) => {
             return `
               <url>
                   <loc>${`https://in-box.co.kr${path}`}</loc>
-                  <lastmod>${getDate}</lastmod>
               </url>
             `
           })
@@ -40,14 +35,7 @@ export const getServerSideProps = async ({res} : any) => {
     parser: 'html',
   })
 
-  res.setHeader("Content-Type", "text/xml")
-  res.write(formatted)
-  res.end()
-  //writeFileSync('public/sitemap.xml', formatted)
-
-  return {
-    props: {}
-  }
+  // eslint-disable-next-line no-sync
+  writeFileSync('public/sitemap.xml', formatted);
 }
-
-export default Sitemap;
+generateSitemap();

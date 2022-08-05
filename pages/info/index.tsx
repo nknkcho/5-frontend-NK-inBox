@@ -24,6 +24,7 @@ export default function Intro() {
     <>
       <NextSeo
         title="Info"
+        description="IN-BOX를 만든 사람들과 IN-BOX의 제작 이유를 소개합니다."
         canonical={`${metadata.meta.url}/info`}
         openGraph={{ url: `${metadata.meta.url}/info` }}
       />
@@ -31,14 +32,14 @@ export default function Intro() {
       <Header />
       <div className={styles.infoContainer}>
         <p className={styles.infoText}>
-          Hi, I&apos;m Amy. <br />
+          Hi, we&apos;re team IN-BOX. <br />
           Nice to meet you. <br />
-          I made this homepage <br />
-          because I wanted to cherish all of our moments. <br />
-          I hope every moment of your happiness will be with you. <br />
+          We made this homepage <br />
+          to create an online space where developers can freely show their wonderful portfolios. <br />
+          We hope every moment of your career will be with you. <br />
           <br />
           If you have any questions, <br />
-          please contact me through to menu.
+          please contact us through to contact menu.
         </p>
         <div className={styles.optionRow}>
           <Category />
