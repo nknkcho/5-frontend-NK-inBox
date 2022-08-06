@@ -112,7 +112,6 @@ export default function ModalForm(props: { closeModal: Function }) {
         </button>
         <h2 className={styles.modalTitle}>Upload your Box</h2>
         <form className={styles.formContainer}>
-          {/* FIXME: 아래 부분 함수로 바꾸어 코드 정리하기 */}
           <section>
             <div
               {...getRootProps({
