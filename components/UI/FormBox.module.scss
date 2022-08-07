@@ -8,6 +8,14 @@
   cursor: pointer;
 }
 
+.boxMsg {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 120%;
+  margin-top: 0;
+}
+
 @include iphonePro {
   .homeBox {
     width: 100px;
@@ -32,6 +40,13 @@
 @include ipadPro {
   .homeBox {
     width: 150px;
+    height: 100px;
+  }
+}
+
+@include laptop {
+  .homeBox {
+    width: 250px;
     height: 100px;
   }
 }

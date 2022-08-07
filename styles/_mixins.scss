@@ -24,8 +24,14 @@
   }
 }
 
+@mixin laptop {
+  @media (min-width: #{$breakpoint-ipadPro}) and (max-width: #{$breakpoint-laptop - 1px}) {
+    @content;
+  }
+}
+
 @mixin desktop {
-  @media (min-width: #{$breakpoint-ipadPro}) and (max-width: #{$breakpoint-desktop - 1px}) {
+  @media (min-width: #{$breakpoint-laptop}) and (max-width: #{$breakpoint-desktop}) {
     @content;
   }
 }
