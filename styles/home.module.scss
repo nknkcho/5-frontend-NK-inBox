@@ -43,8 +43,6 @@
 }
 
 .boxContainer {
-  display: flex;
-  flex-direction: column;
   float: right;
 }
 
@@ -108,7 +106,7 @@
   }
 }
 
-@include desktop {
+@include laptop {
   .items {
     margin: 100px 50px 0 50px;
     display: block;
@@ -120,5 +118,23 @@
 
   .boxMsg {
     font-size: 1.5rem;
+  }
+}
+
+@include desktop {
+  .items {
+    margin: 100px 50px 0 50px;
+  }
+
+  .catchphrase {
+    font-size: 7.5rem;
+  }
+
+  .boxMsg {
+    font-size: 1.5rem;
+  }
+
+  .boxContainer {
+    margin-bottom: 100px;
   }
 }

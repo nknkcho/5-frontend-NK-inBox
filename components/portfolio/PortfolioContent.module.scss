@@ -296,7 +296,7 @@
   }
 }
 
-@include desktop {
+@include laptop {
   .imgWrapper,
   .video {
     width: 924px;
@@ -347,5 +347,41 @@
 
   .footerDescription {
     text-align: center;
+  }
+}
+
+@include desktop {
+  .portfolioFilter {
+    height: 70vh;
+  }
+
+  .imgWrapper,
+  .video {
+    width: 90%;
+    height: 500px;
+  }
+
+  .description {
+    font-size: 1.5rem;
+  }
+
+  .footer {
+    width: 95%;
+    margin: 10 0 0 0;
+  }
+
+  .nextBtn {
+    margin: auto;
+    width: 450px;
+    height: 60px;
+    font-size: 2.25rem;
+  }
+
+  .footerTitle {
+    text-align: left;
+  }
+
+  .footerDescription {
+    text-align: right;
   }
 }

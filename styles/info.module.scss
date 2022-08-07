@@ -65,13 +65,24 @@
   }
 }
 
+@include laptop {
+  .infoContainer {
+    margin: 0 50px;
+  }
+
+  .infoText {
+    margin: 331px 0 100px 0;
+    font-size: 3rem;
+  }
+}
+
 @include desktop {
   .infoContainer {
     margin: 0 50px;
   }
 
   .infoText {
-    margin: 331px 0 230px 0;
+    margin: 110px 0 30px 0;
     font-size: 3rem;
   }
 }

@@ -177,11 +177,11 @@
   }
 }
 
-@include desktop {
+@include laptop {
   .modalContainer {
     width: 100%;
     height: 100%;
-    padding: 50px 50px 282px;
+    padding: 50px 50px 226px;
   }
 
   .closeBtn {
@@ -190,7 +190,7 @@
 
   .modalTitle {
     font-size: 3rem;
-    margin: 183px 270px 50px;
+    margin: 127px 190px 30px;
   }
 
   .formContainer {
@@ -198,13 +198,47 @@
   }
 
   .dropzoneContainer {
-    height: 140px;
-    margin-bottom: 50px;
+    height: 110px;
+    margin-bottom: 30px;
   }
 
   .dropzoneHeadTitle {
-    margin: 26.5px 0 10px 0;
-    font-size: 2.25rem;
+    margin: 20px 0 10px 0;
+    font-size: 1.5rem;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.125rem;
+  }
+}
+
+@include desktop {
+  .modalContainer {
+    width: 1000px;
+    height: 865px;
+  }
+
+  .closeBtn {
+    width: 50px;
+  }
+
+  .modalTitle {
+    font-size: 3rem;
+    margin: 10px 100px 30px;
+  }
+
+  .formContainer {
+    padding: 0;
+  }
+
+  .dropzoneContainer {
+    height: 120px;
+    margin-bottom: 30px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 20px 0 10px 0;
+    font-size: 2rem;
   }
 
   .dropzoneSubTitle {

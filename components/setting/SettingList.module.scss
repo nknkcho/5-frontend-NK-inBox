@@ -164,7 +164,7 @@
   }
 }
 
-@include desktop {
+@include laptop {
   .settingContainer {
     margin: 210px 0 0 60px;
   }
@@ -180,6 +180,34 @@
     height: 98px;
     font-size: 4.5rem;
     margin: 5px 10px 0 0;
+  }
+
+  .backBtn {
+    width: 520px;
+    height: 98px;
+    font-size: 4.5rem;
+    margin: 0;
+  }
+
+  .text {
+    font-size: 7.5rem;
+  }
+}
+
+@include desktop {
+  .settingContainer {
+    margin: 100px 60px 0 60px;
+  }
+
+  .optionRow {
+    margin-bottom: 20px;
+  }
+
+  .rangeBtn {
+    width: 216px;
+    height: 98px;
+    font-size: 4.5rem;
+    margin: 5px 10px 0 10px;
   }
 
   .backBtn {
