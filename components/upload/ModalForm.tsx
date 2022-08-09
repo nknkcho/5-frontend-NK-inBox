@@ -25,8 +25,15 @@ export default function ModalForm(props: { closeModal: Function }) {
     region: process.env.NEXT_PUBLIC_REGION,
   })
 
+  interface DroppedFile {
+    type: string
+    name: string | CryptoJS.lib.WordArray
+  }
+
   // dropzone에 들어온 파일을 받는 함수
-  const onDrop = (files: any) => {
+  const onDrop = (
+    files: Array<DroppedFile>
+  ) => {
     const acceptedFiles = files[0]
     setFileKey(`${sha256(acceptedFiles.name).toString()}.${acceptedFiles.type.substring(6)}`)
     setProgress(0)
@@ -35,20 +42,25 @@ export default function ModalForm(props: { closeModal: Function }) {
 
   // S3 버켓에 파일을 올리는 함수
   const uploadToBucket = async (
-    selectedFile: {
-      type: string
-      name: string | CryptoJS.lib.WordArray
-    } | null
+    selectedFile: DroppedFile | null
   ) => {
     if (!selectedFile) {
       return
     }
 
+    interface FileParams {
+      ACL: string
+      Body: DroppedFile
+      Bucket: string
+      Key: string
+    }
+
     // 파일 확장자 정보 담기
-    const params: any = {
+    const params: FileParams = {
       ACL: 'public-read',
       Body: selectedFile,
-      Bucket: process.env.NEXT_PUBLIC_BUCKET_NAME,
+      // ! means 'this value will not be undefined'
+      Bucket: process.env.NEXT_PUBLIC_BUCKET_NAME!,
       Key: `${sha256(selectedFile.name).toString()}.${selectedFile.type.substring(6)}`,
     }
 
