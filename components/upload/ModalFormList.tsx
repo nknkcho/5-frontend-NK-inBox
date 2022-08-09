@@ -3,8 +3,8 @@ import Router from "next/router"
 import styles from "./ModalFormList.module.scss";
 import { postRequest } from "../../utils/fetchData";
 
-// List 컴포넌트의 타입
-type ListProps = {
+//List 컴포넌트의 타입
+interface ListProps {
   text: string;
   maxLength: number;
   placeholder: string;
@@ -90,18 +90,29 @@ export default function FormList(props: { path: string }) {
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   );
+
+  interface EmailRequest {
+    confirmIdx: number
+  }
   // email 유효성 검사 통과 후, 버튼 클릭 시 버튼 스타일 변경 및 이메일 코드 fetch 요청 event
   const handleSendCode = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
       setSendCodeBtnText("RESEND");
-      const result: any = await postRequest("portfolios/email", { email });
+      const result: EmailRequest = await postRequest("portfolios/email", { email });
       setGetConfirmIdx(result.confirmIdx);
     } catch (error) {
       console.log(error);
     }
   };
 
+  interface formErrorsType {
+    title : string | void,
+    date : string | void,
+    about : string | void,
+    email : string | void,
+    code : string | void,
+  }
   // 전체 유저 입력값의 유효성 검사 함수
   const inputHandler = (e: {
     preventDefault: Function;
@@ -109,8 +120,7 @@ export default function FormList(props: { path: string }) {
   }) => {
     e.preventDefault();
     const { value, name } = e.target;
-    // FIXME: any 말고 어떤거?
-    let formErrors: any = inputs.formErrors;
+    let formErrors: formErrorsType = inputs.formErrors;
     let titleValid = inputs.titleValid;
     let dateValid = inputs.dateValid;
     let aboutValid = inputs.aboutValid;
