@@ -7,11 +7,9 @@ import styles from './ModalForm.module.scss'
 import closePic from '../../public/close.svg'
 import FormList from './ModalFormList'
 
-export default function ModalForm(props: { closeModal: Function }) {
+const DropdownZone = ({ setFileKey }: { setFileKey : Function }) => {
   // 파일 업로드 진행 상황을 확인할 수 있는 progress bar를 위한 State
   const [progress, setProgress] = useState(0)
-  // 업로드된 파일의 key
-  const [fileKey, setFileKey] = useState('')
 
   // S3 접근을 위한 AWS 계정 설정
   AWS.config.update({
@@ -31,9 +29,7 @@ export default function ModalForm(props: { closeModal: Function }) {
   }
 
   // dropzone에 들어온 파일을 받는 함수
-  const onDrop = (
-    files: Array<DroppedFile>
-  ) => {
+  const onDrop = (files: Array<DroppedFile>) => {
     const acceptedFiles = files[0]
     setFileKey(`${sha256(acceptedFiles.name).toString()}.${acceptedFiles.type.substring(6)}`)
     setProgress(0)
@@ -41,9 +37,7 @@ export default function ModalForm(props: { closeModal: Function }) {
   }
 
   // S3 버켓에 파일을 올리는 함수
-  const uploadToBucket = async (
-    selectedFile: DroppedFile | null
-  ) => {
+  const uploadToBucket = async (selectedFile: DroppedFile | null) => {
     if (!selectedFile) {
       return
     }
@@ -93,29 +87,47 @@ export default function ModalForm(props: { closeModal: Function }) {
           <div className={styles.dropzoneSubTitle}>Drop files here.</div>
         </>
       )
-    } else {
-      return (
-        <>
-          <div className={styles.dropzoneHeadTitle}>File type is not allowed</div>
-          <div className={styles.dropzoneSubTitle}>Please upload another file.</div>
-        </>
-      )
     }
+    return (
+      <>
+        <div className={styles.dropzoneHeadTitle}>File type is not allowed</div>
+        <div className={styles.dropzoneSubTitle}>Please upload another file.</div>
+      </>
+    )
   }
 
   const isDragActiveHandler = (isDragActive: boolean) => {
     if (isDragActive) {
       return isDragAcceptHandler(isDragAccept)
-    } else {
-      return (
-        <>
-          <div className={styles.dropzoneHeadTitle}>File Upload</div>
-          <div className={styles.dropzoneSubTitle}>Drop files here.</div>
-        </>
-      )
     }
+    return (
+      <>
+        <div className={styles.dropzoneHeadTitle}>File Upload</div>
+        <div className={styles.dropzoneSubTitle}>Drop files here.</div>
+      </>
+    )
   }
 
+  return (
+    <section>
+      <div
+        {...getRootProps({
+          className: `${styles.dropzoneContainer}
+          ${isDragAccept && styles.dropzoneAccept}
+          ${isDragReject && styles.dropzoneReject}`,
+        })}
+      >
+        <input {...getInputProps()} />
+        {isDragActiveHandler(isDragActive)}
+        <div className={styles.dropzoneProgress}>{progress}%</div>
+      </div>
+    </section>
+  )
+}
+
+export default function ModalForm(props: { closeModal: Function }) {
+  // 업로드된 파일의 key
+  const [fileKey, setFileKey] = useState('')
   return (
     <div className={styles.modalBackground}>
       <div className={styles.modalContainer}>
@@ -124,19 +136,7 @@ export default function ModalForm(props: { closeModal: Function }) {
         </button>
         <h2 className={styles.modalTitle}>Upload your Box</h2>
         <form className={styles.formContainer}>
-          <section>
-            <div
-              {...getRootProps({
-                className: `${styles.dropzoneContainer}
-          ${isDragAccept && styles.dropzoneAccept}
-          ${isDragReject && styles.dropzoneReject}`,
-              })}
-            >
-              <input {...getInputProps()} />
-              {isDragActiveHandler(isDragActive)}
-              <div className={styles.dropzoneProgress}>{progress}%</div>
-            </div>
-          </section>
+          <DropdownZone setFileKey={setFileKey}/>
           <FormList path={fileKey} />
         </form>
       </div>
