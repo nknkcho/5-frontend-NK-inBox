@@ -4,7 +4,7 @@ import styles from '../portfolio/PortfolioContent.module.scss'
 import filter from '../../utils/filters'
 import { getRequest } from '../../utils/fetchData'
 
-type FilterImageProps = {
+interface FilterImageProps {
   animation: boolean
   portfolioFilter: string | StaticImport
   imgState: Function
@@ -29,7 +29,7 @@ export const FilterImage = (props: FilterImageProps) => {
   )
 }
 
-type Content = {
+interface Content {
   message: string
   range: string
   title: string

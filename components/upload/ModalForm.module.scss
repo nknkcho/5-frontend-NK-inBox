@@ -72,7 +72,7 @@
   margin: 0 0 10px 0;
 }
 
-@include iphoneProMax {
+@include iphonePro {
   .modalContainer {
     width: 100%;
     height: 100%;
@@ -84,8 +84,8 @@
   }
 
   .modalTitle {
-    font-size: 2.25rem;
-    margin: 75px 19px 30px;
+    font-size: 2rem;
+    margin: 50px 19px 15px;
   }
 
   .formContainer {
@@ -99,6 +99,41 @@
 
   .dropzoneHeadTitle {
     margin: 20px 0 10px 0;
+    font-size: 1.5rem;
+  }
+
+  .dropzoneSubTitle {
+    font-size: 1.125rem;
+  }
+}
+
+@include iphoneProMax {
+  .modalContainer {
+    width: 100%;
+    height: 100%;
+    padding: 30px 20px 45px;
+  }
+
+  .closeBtn {
+    width: 40px;
+  }
+
+  .modalTitle {
+    font-size: 2rem;
+    margin: 75px 19px 30px;
+  }
+
+  .formContainer {
+    padding: 0;
+  }
+
+  .dropzoneContainer {
+    height: 108px;
+    margin-bottom: 15px;
+  }
+
+  .dropzoneHeadTitle {
+    margin: 15px 0 10px 0;
     font-size: 1.5rem;
   }
 

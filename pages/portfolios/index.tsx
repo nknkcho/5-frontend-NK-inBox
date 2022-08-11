@@ -6,7 +6,7 @@ import { InferGetStaticPropsType } from "next";
 import metadata from "../../components/metadata";
 import { NextSeo } from "next-seo";
 
-type Content = {
+interface Content {
   message: string;
   range: string;
   title: string;
