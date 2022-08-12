@@ -111,7 +111,7 @@ export default function FormList(props: { path: string }) {
     inputs.codeValid,
     checkFilePath(),
   ]
-  console.log(validationData)
+
   // email 유효성 검사 통과 후, 버튼 클릭 시 버튼 스타일 변경 및 이메일 코드 fetch 요청 event
   const handleSendCode = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
@@ -144,7 +144,6 @@ export default function FormList(props: { path: string }) {
     confirmIdx: getConfirmIdx,
     filePath: props.path,
   }
-  console.log(formListData)
 
   // validationCheck가 있음에도 fetch 요청을 보내는 이유?
   // 백엔드 서버에서 보낸 코드 인덱스와 인증 번호가 일치하는 지를 확인해야 하기 때문
