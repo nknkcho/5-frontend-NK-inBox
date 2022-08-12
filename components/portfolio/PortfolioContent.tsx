@@ -63,11 +63,14 @@ export default function PortfolioFooter(props: { content: Content }) {
   const [about, setAbout] = useState(portfolioData.about)
   // setting 설정에 따라 filter 이미지를 보여줄 것인지를 결정하는 상태
   const [showImg, setShowImg] = useState(true)
+
   // 포트폴리오 전환 버튼 클릭 시 발생하는 이벤트
   const onclickHandler = async () => {
-    //await getRequest(`cookies`);
     const res = await getRequest('portfolios/file')
     const newData = await res.json()
+    if(newData.message === "not_exist"){
+      return alert("Oops! No more data")
+    }
     const newPath = videoPath(newData.fileName, newData.extension)
     setVideoSrc(newPath)
     setVideoType(`video/${newData.extension}`)
