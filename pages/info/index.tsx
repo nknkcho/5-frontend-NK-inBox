@@ -3,21 +3,7 @@ import Header from "../../components/UI/Header";
 import styles from "../../styles/info.module.scss";
 import metadata from "../../components/metadata";
 import { NextSeo } from "next-seo";
-
-const Category = dynamic(
-  (): Promise<any> =>
-    import("../../components/setting/SettingList").then(
-      (module) => module.Category
-    ),
-  { ssr: false }
-);
-const GoBackButton = dynamic(
-  (): Promise<any> =>
-    import("../../components/setting/SettingList").then(
-      (module) => module.GoBackButton
-    ),
-  { ssr: false }
-);
+import { Category, GoBackButton } from "../../components/setting/SettingList";
 
 export default function Intro() {
   return (
