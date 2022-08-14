@@ -19,7 +19,7 @@ export const GoBackButton = () => {
 }
 
 interface CategoryProps {
-  category: string
+  category?: string
 }
 
 // export 이유 : Info 페이지에 동일한 컴포넌트를 사용하기 때문
