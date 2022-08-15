@@ -42,7 +42,7 @@ const List = ({
 
   return (
     <div className={styles.inputComponent}>
-      <div className={styles.inputLabel}>{text}</div>
+      <label className={styles.inputLabel}>{text}</label>
       {name === 'email' ? inputEmailComponent : inputComponent}
     </div>
   )
