@@ -85,14 +85,18 @@ export default function FormList(props: { path: string }) {
         break
     }
 
-    setInputs({
-      ...inputs,
+    // 리액트는 상태 업데이트 스케쥴을 갖고 있어, 바로 실행하지 않는다.
+    // 수많은 상태 업데이트를 계획한다면, 오래되거나 잘못된 상태 스냅샷에 의존할 수 있다.
+    // 따라서 가장 최신의 스냅샷임을 보장해야 한다.
+    setInputs((prevState) => {
+      return {...prevState,
       [name]: value,
       titleValid: titleValid,
       dateValid: dateValid,
       aboutValid: aboutValid,
       emailValid: emailValid,
       codeValid: codeValid,
+      }
     })
   }
 
@@ -170,7 +174,7 @@ export default function FormList(props: { path: string }) {
     <>
       <div className={styles.inputLayout}>
         <div className={styles.inputComponent}>
-          <div className={styles.inputLabel}>Range.</div>
+          <label className={styles.inputLabel}>Range.</label>
           <div className={styles.rangeInputContainer}>
             <RangeBtn
               value={'FE'}
@@ -238,7 +242,6 @@ export default function FormList(props: { path: string }) {
           validate={checkCode}
         />
       </div>
-
       <input
         type="submit"
         value="Please enter the contents"
