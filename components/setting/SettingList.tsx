@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { getRequest } from '../../utils/fetchData'
 import styles from './SettingList.module.scss'
 import ModalForm from '../../components/upload/ModalForm'
 import OnOffBtn from '../setting/OnOffBtn'
