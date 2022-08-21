@@ -12,7 +12,7 @@ export default function ModalForm(props: { closeModal: Function }) {
     <div className={styles.modalBackground}>
       <div className={styles.modalContainer}>
         <button className={styles.closeBtn} onClick={() => props.closeModal(false)}>
-          <Image alt="Close" src={closePic} width={40} height={40} />
+          <Image alt="Close button of In-box portfolio uploading modal" src={closePic} width={40} height={40} />
         </button>
         <h2 className={styles.modalTitle}>Upload your Box</h2>
         <form className={styles.formContainer}>
