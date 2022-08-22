@@ -10,6 +10,11 @@ export const postRequest = async (path: string, body: object) => {
     credentials: "include",
   })
 
+
+  if(res.status === 500){
+    return alert("잠시 후에 다시 접속 해주세요!")
+  }
+
   if(res.status === 200){
     const data = await res.json();
     return data
