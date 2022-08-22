@@ -3,6 +3,8 @@ import Image from 'next/image'
 import styles from '../portfolio/PortfolioContent.module.scss'
 import filter from '../../utils/filters'
 import { getRequest } from '../../utils/fetchData'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import SelectedFilter from '../../state/SelectedFilter'
 
 interface FilterImageProps {
   animation: boolean
@@ -63,7 +65,7 @@ export default function PortfolioFooter(props: { content: Content }) {
   const [about, setAbout] = useState(portfolioData.about)
   // setting 설정에 따라 filter 이미지를 보여줄 것인지를 결정하는 상태
   const [showImg, setShowImg] = useState(true)
-
+  const [currentFilter, setCurrentFilter] = useRecoilState(SelectedFilter)
   // 포트폴리오 전환 버튼 클릭 시 발생하는 이벤트
   const onclickHandler = async () => {
     const res = await getRequest('portfolios/file')
@@ -91,8 +93,7 @@ export default function PortfolioFooter(props: { content: Content }) {
   // 이미지 애니메이션 변경을 위한 상태값
   const [animation, setAnimation] = useState(false)
   const filterStatus = () => {
-    const selectedFilter = localStorage.getItem('filter')
-    if (selectedFilter === 'on') {
+    if (currentFilter === false) {
       setShowImg(true)
     } else {
       setShowImg(false)

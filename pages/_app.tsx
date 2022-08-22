@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/inline-script-id */
-import "../styles/globals.scss";
-import type { AppProps } from "next/app";
-import Script from "next/script";
-import { DefaultSeo } from "next-seo";
-
+import '../styles/globals.scss'
+import type { AppProps } from 'next/app'
+import Script from 'next/script'
+import { DefaultSeo } from 'next-seo'
+import { RecoilRoot } from 'recoil'
 import SEO from '../next-seo.config'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -25,9 +25,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
     `}
       </Script>
-      <Component {...pageProps} />
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

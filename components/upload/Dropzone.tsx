@@ -75,6 +75,7 @@ const Dropzone = ({ setFileKey }: { setFileKey : Function }) => {
     },
   })
 
+  // drag된 파일이 업로드 가능한 확장자인지 아닌지를 판별하여 UI에 반영하는 함수
   const isDragAcceptHandler = (isDragAccept: boolean) => {
     if (isDragAccept) {
       return (
@@ -92,6 +93,7 @@ const Dropzone = ({ setFileKey }: { setFileKey : Function }) => {
     )
   }
 
+  // 파일이 drag된 상태인지 아닌지에 따라 UI를 변경하는 함수
   const isDragActiveHandler = (isDragActive: boolean) => {
     if (isDragActive) {
       return isDragAcceptHandler(isDragAccept)
