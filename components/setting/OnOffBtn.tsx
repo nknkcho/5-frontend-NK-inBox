@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil'
 import  SelectedFilter from '../../state/SelectedFilter'
 import styles from '../setting/SettingList.module.scss'
 import { getRequest } from '../../utils/fetchData'
 
 export default function OnOffBtn() {
-  const onBtnClick = useRecoilValue(SelectedFilter)
-  const setOnBtnClick = useSetRecoilState(SelectedFilter)
+  const [onBtnClick, setOnBtnClick] = useRecoilState(SelectedFilter)
 
   // 페이지 첫 로딩(혹은 새로고침) 시, 기존 Setting 값을 유지하기 위해 useEffect 사용
   useEffect(() => {
