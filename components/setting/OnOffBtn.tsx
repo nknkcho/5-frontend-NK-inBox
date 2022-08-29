@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil'
+import { useEffect } from 'react'
+import { useRecoilState } from 'recoil'
 import  SelectedFilter from '../../state/SelectedFilter'
 import styles from '../setting/SettingList.module.scss'
 import { getRequest } from '../../utils/fetchData'
