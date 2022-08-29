@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     `}
       </Script>
       <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=0.9"/>
+      <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
       </Head>
       <RecoilRoot>
         <Component {...pageProps} />
