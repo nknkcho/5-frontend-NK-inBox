@@ -1,15 +1,14 @@
 @import "../styles/mixins";
 
 .homeContainer {
-  position: relative;
   width: 100vw;
   height: 100vh;
 }
 
 .bgWrap {
   position: relative;
-  height: 100vh;
   width: 100vw;
+  height: 100%;
   overflow: hidden;
   z-index: -1;
 }
@@ -20,6 +19,7 @@
 }
 
 .items {
+  position: relative;
   margin: 60px;
   display: flex;
   align-items: flex-end;
@@ -39,7 +39,7 @@
   font-size: 1.5rem;
   text-align: center;
   line-height: 120%;
-  margin-top: 0;
+  margin: 0 0 5px 0;
 }
 
 .boxContainer {
@@ -63,12 +63,12 @@
 
 @include iphoneProMax {
   .items {
-    margin: 180px 20px 0 20px;
+    margin: 100px 20px 0 20px;
     display: block;
   }
 
   .catchphrase {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   .boxMsg {
@@ -113,7 +113,7 @@
   }
 
   .catchphrase {
-    font-size: 10rem;
+    font-size: 7rem;
   }
 
   .boxMsg {

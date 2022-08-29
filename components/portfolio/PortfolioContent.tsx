@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../portfolio/PortfolioContent.module.scss'
 import filter from '../../utils/filters'
 import { getRequest } from '../../utils/fetchData'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import SelectedFilter from '../../state/SelectedFilter'
 
 interface FilterImageProps {
@@ -65,7 +65,8 @@ export default function PortfolioFooter(props: { content: Content }) {
   const [about, setAbout] = useState(portfolioData.about)
   // setting 설정에 따라 filter 이미지를 보여줄 것인지를 결정하는 상태
   const [showImg, setShowImg] = useState(true)
-  const [currentFilter, setCurrentFilter] = useRecoilState(SelectedFilter)
+  // selected filter 상태 값 읽어오기
+  const currentFilter = useRecoilValue(SelectedFilter)
   // 포트폴리오 전환 버튼 클릭 시 발생하는 이벤트
   const onclickHandler = async () => {
     const res = await getRequest('portfolios/file')
@@ -84,7 +85,7 @@ export default function PortfolioFooter(props: { content: Content }) {
   }
 
   // 필터 이미지 클릭시 필터 이미지가 없어지고 동영상이 나타나는 이벤트
-  const handleFilterImgClick = async () => {
+  const filterImgClickHandler = async () => {
     setShowImg(false)
   }
 
@@ -109,10 +110,10 @@ export default function PortfolioFooter(props: { content: Content }) {
     <>
       <div className={styles.portfolioFilter}>
         {showImg && animation && (
-          <FilterImage animation={animation} portfolioFilter={portfolioFilter} imgState={handleFilterImgClick} />
+          <FilterImage animation={animation} portfolioFilter={portfolioFilter} imgState={filterImgClickHandler} />
         )}
         {showImg && !animation && (
-          <FilterImage animation={!animation} portfolioFilter={portfolioFilter} imgState={handleFilterImgClick}/>
+          <FilterImage animation={!animation} portfolioFilter={portfolioFilter} imgState={filterImgClickHandler}/>
         )}
         {!showImg && (
           <video className={styles.video} key={videoSrc} controls>

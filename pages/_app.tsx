@@ -5,6 +5,7 @@ import Script from 'next/script'
 import { DefaultSeo } from 'next-seo'
 import { RecoilRoot } from 'recoil'
 import SEO from '../next-seo.config'
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -25,6 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
     `}
       </Script>
+      <Head>
+      <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+      </Head>
       <RecoilRoot>
         <Component {...pageProps} />
       </RecoilRoot>

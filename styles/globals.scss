@@ -5,14 +5,21 @@
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     sans-serif;
-  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
-  overflow-x: hidden;
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -20,12 +27,6 @@ body {
   margin: 0;
   line-height: 1;
   background-color: #ffb800;
-}
-
-#__next {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 a {
