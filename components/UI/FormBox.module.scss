@@ -1,7 +1,6 @@
 @import "../../styles/mixins";
 
 .homeBox {
-  height: 220px;
   width: 286px;
   margin: 0;
   padding: 0;
@@ -19,14 +18,12 @@
 @include iphonePro {
   .homeBox {
     width: 100px;
-    height: 100px;
   }
 }
 
 @include iphoneProMax {
   .homeBox {
     width: 130px;
-    height: 100px;
   }
 }
 
