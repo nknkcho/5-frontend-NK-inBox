@@ -16,7 +16,7 @@ export default function OnOffBtn() {
     if (selectedFilter === 'on') {
       setOnBtnClick(false)
     }
-  }, [onBtnClick])
+  }, [setOnBtnClick])
 
   const handleFilterClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     try {
