@@ -18,7 +18,7 @@ export const FilterImage = (props: FilterImageProps) => {
       className={
         props.animation ? `${styles.imgWrapper} ${styles.fadeInClass}` : `${styles.imgWrapper}`
       }
-      onClick={(e) => props.imgState(e)}
+      onClick={e => props.imgState(e)}
     >
       <Image
         alt="Inbox filter for portfolios"
@@ -71,8 +71,8 @@ export default function PortfolioFooter(props: { content: Content }) {
   const onclickHandler = async () => {
     const res = await getRequest('portfolios/file')
     const newData = await res.json()
-    if(newData.message === "not_exist"){
-      return alert("Oops! No more data")
+    if (newData.message === 'not_exist') {
+      return alert('Oops! No more data')
     }
     const newPath = videoPath(newData.fileName, newData.extension)
     setVideoSrc(newPath)
@@ -103,20 +103,32 @@ export default function PortfolioFooter(props: { content: Content }) {
 
   // 페이지 로딩 시, filter 세팅값에 따라 이미지를 보여줄 것인지에 따라 상태값 업데이트
   useEffect(() => {
-    filterStatus()
-  }, [])
+    if (currentFilter === false) {
+      setShowImg(true)
+    } else {
+      setShowImg(false)
+    }
+  }, [currentFilter])
 
   return (
     <>
       <div className={styles.portfolioFilter}>
         {showImg && animation && (
-          <FilterImage animation={animation} portfolioFilter={portfolioFilter} imgState={filterImgClickHandler} />
+          <FilterImage
+            animation={animation}
+            portfolioFilter={portfolioFilter}
+            imgState={filterImgClickHandler}
+          />
         )}
         {showImg && !animation && (
-          <FilterImage animation={!animation} portfolioFilter={portfolioFilter} imgState={filterImgClickHandler}/>
+          <FilterImage
+            animation={!animation}
+            portfolioFilter={portfolioFilter}
+            imgState={filterImgClickHandler}
+          />
         )}
         {!showImg && (
-          <video className={styles.video} key={videoSrc} controls>
+          <video className={styles.video} key={videoSrc} autoPlay controls>
             <source src={videoSrc} type={videoType} />
           </video>
         )}
