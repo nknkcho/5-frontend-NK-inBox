@@ -1,0 +1,44 @@
+@import '../../styles/mixins';
+
+.alertBackground {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin containerTheme {
+  width: 500px;
+  height: 100px;
+  margin: auto;
+  padding: 60px;
+  color: #ffffff;
+}
+
+.errorContainer {
+  @include containerTheme;
+  background: rgba(248, 61, 61, 0.95);
+}
+
+.okContainer {
+  @include containerTheme;
+  background: rgba(70, 248, 61, 0.95);
+}
+
+.closeBtn {
+  float: right;
+}
+
+.alertText{
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 40px 0;
+}

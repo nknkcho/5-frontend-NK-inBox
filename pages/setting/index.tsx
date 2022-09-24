@@ -1,9 +1,8 @@
-import Header from "../../components/UI/Header";
-import SettingList from "../../components/setting/SettingList";
-import metadata from "../../components/metadata";
-import { NextSeo } from "next-seo";
+import Header from '../../components/UI/Header'
+import SettingList from '../../components/setting/SettingList'
+import metadata from '../../components/metadata'
+import { NextSeo } from 'next-seo'
 
-// FIXME: 왜 바디가 전체 화면을 차지하지 않는걸까?
 export default function Settings() {
   return (
     <>
@@ -16,5 +15,5 @@ export default function Settings() {
       <Header />
       <SettingList />
     </>
-  );
+  )
 }
