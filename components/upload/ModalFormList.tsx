@@ -4,8 +4,14 @@ import styles from './ModalFormList.module.scss'
 import { postRequest } from '../../utils/fetchData'
 import RangeBtn from './RangeBtn'
 import List from './List'
+import AlertModal from './AlertModal'
 
 export default function FormList(props: { path: string }) {
+  const [openAlert, setOpenAlert] = useState(false)
+  const [alertSetting, setAlertSetting] = useState({
+    message: '',
+    status: '',
+  })
   // Range 버튼 관련 상태
   const [enteredRange, setEnteredRange] = useState('fe')
   const [onBtnClick, setOnBtnClick] = useState(false)
@@ -88,14 +94,15 @@ export default function FormList(props: { path: string }) {
     // 리액트는 상태 업데이트 스케쥴을 갖고 있어, 바로 실행하지 않는다.
     // 수많은 상태 업데이트를 계획한다면, 오래되거나 잘못된 상태 스냅샷에 의존할 수 있다.
     // 따라서 가장 최신의 스냅샷임을 보장해야 한다.
-    setInputs((prevState) => {
-      return {...prevState,
-      [name]: value,
-      titleValid: titleValid,
-      dateValid: dateValid,
-      aboutValid: aboutValid,
-      emailValid: emailValid,
-      codeValid: codeValid,
+    setInputs(prevState => {
+      return {
+        ...prevState,
+        [name]: value,
+        titleValid: titleValid,
+        dateValid: dateValid,
+        aboutValid: aboutValid,
+        emailValid: emailValid,
+        codeValid: codeValid,
       }
     })
   }
@@ -120,9 +127,12 @@ export default function FormList(props: { path: string }) {
   const handleSendCode = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     try {
-      setSendCodeBtnText('RESEND')
-      const result: { confirmIdx: number } = await postRequest('portfolios/email', { email })
-      setGetConfirmIdx(result.confirmIdx)
+      if (confirm('해당 이메일 주소로 인증 번호를 전송하시겠습니까?')) {
+        setSendCodeBtnText('RESEND')
+        const result: { confirmIdx: number } = await postRequest('portfolios/email', { email })
+        setGetConfirmIdx(result.confirmIdx)
+      }
+      return
     } catch (error) {
       console.log(error)
     }
@@ -154,15 +164,35 @@ export default function FormList(props: { path: string }) {
   const submitFormDataHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     try {
-      const result = await postRequest('portfolios', formListData)
-      if (result === 400) {
-        alert('Please check your input')
-        return
-      }
-      if (result === 201) {
-        alert('Form submitted!')
-        Router.reload()
-        return
+      if (confirm('제출하시겠습니까?')) {
+        const result = await postRequest('portfolios', formListData)
+        if (result === 400) {
+          setOpenAlert(true)
+          setAlertSetting({ message: 'Please check your input', status: 'error' })
+          return
+        }
+        if (result === 401) {
+          setOpenAlert(true)
+          setAlertSetting({ message: 'Please check your email code', status: 'error' })
+          return
+        }
+        if (result === 201) {
+          setOpenAlert(true)
+          setAlertSetting({ message: 'Form submitted!', status: 'ok' })
+          setInputs({
+            title: '',
+            date: '',
+            about: '',
+            email: '',
+            code: '',
+            titleValid: false,
+            dateValid: false,
+            aboutValid: false,
+            emailValid: false,
+            codeValid: false,
+          })
+          //if (openAlert === false) return Router.reload()
+        }
       }
       return
     } catch (error) {
@@ -172,6 +202,7 @@ export default function FormList(props: { path: string }) {
 
   return (
     <>
+      {openAlert && <AlertModal closeButton={setOpenAlert} setting={alertSetting} />}
       <div className={styles.inputLayout}>
         <div className={styles.inputComponent}>
           <label className={styles.inputLabel}>Range.</label>
@@ -193,7 +224,7 @@ export default function FormList(props: { path: string }) {
         <List
           text={'Title.'}
           maxLength={20}
-          placeholder={''}
+          placeholder={'Please enter at least 3 characters'}
           name={'title'}
           value={title}
           onChange={inputHandler}
