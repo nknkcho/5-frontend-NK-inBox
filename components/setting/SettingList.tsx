@@ -33,7 +33,7 @@ export default function SettingList() {
       {openModal && <ModalForm closeModal={setOpenModal} />}
       <div className={styles.settingContainer}>
         <div className={styles.optionRow}>
-          <Category category={'Filter'} />
+          <Category category={'Thumbnail'} />
           <OnOffBtn />
         </div>
         <div>
